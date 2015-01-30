@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<title>手指滑屏</title>
+<head>    
+<script src="http://static.paipaiimg.com/js/jquery.1.8.js?t=1.8.3" type="text/javascript" charset="utf-8"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="utf-8">
+<style type="text/css">
+*{margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;}
+.cps_container ul,.cps_container li,body,.cps_container p,iframe,dl,dt,dd{ padding: 0; margin: 0; }
+.cps_container ul,.cps_container li{list-style-type: none}
+.cps_container img{border: 0;}
+.cps_container a{ text-decoration: none}
+.cps_container a:hover{ text-decoration: none}   
+.cps_container{ background:#000; margin: 0 auto;min-width: 320px; max-width: 640px; position: relative ;height:auto;overflow:hidden;}  
+.main-box{width:100%;height:100%;position:relative;z-index:1;background-size:auto auto;text-align:center;overflow:hidden;background:url("http://gtms04.alicdn.com/tps/i4/TB1UDFsGXXXXXc7XXXXxPfUFXXX-16-16.gif") center no-repeat;}
+.show{position:fixed;left:0;top:0;width:100%;height:20px;color:#fff;background:#333;height:20px;line-height:20px;text-align:center;z-index:100;}
+.box-list{position:absolute;left:10%;top:10%;font-size:20px;color:#fff;display:none;height:20%;width:90%;}
+.box-list li{height:30px;line-height:30px;}
+.box-list img{width:80%;}
+.bg_img{width:100%;height:auto;display:inline-block;}
+.animated{display:block !important;}/*保证动画后显示*/
+.lazyload{}
+.anims{display:none;}
+.img2_word{position:absolute;width:60% !important;right:0;bottom:0;height:auto !important;}
+.box0-list{animation-delay:2s;-webkit-animation-delay:5s;}
+</style>
+</head>
+<body>
+<div class="module" data-spm="$spm_module_id">
+    <div class="cps_container">
+		<div class="main-box box-0">
+			<img src="http://s6.mogucdn.com/pic/141119/13t2zv_ieygemzsgi2wezjzmqytambqgyyde_1080x1919.png" class="bg_img">
+			
+		</div>
+		<div class="main-box box-1">
+			
+            
+          <img data-src="img/p_01.jpg" width="640" height="306" class="bg_img lazyload">
+          <img data-src="img/p_02.jpg" width="640" height="283" class="bg_img lazyload">
+          <img data-src="img/p_03.jpg" width="640" height="274" class="bg_img lazyload">
+          <img data-src="img/p_04.jpg" width="640" height="273" class="bg_img lazyload">
+            
+	  </div>
+		<div class="main-box box-2">
+			
+            
+             <img data-src="img/p_05.jpg" width="640" height="302" class="bg_img lazyload">
+            <img data-src="img/p_06.jpg" width="640" height="239" class="bg_img lazyload">
+            <img data-src="img/p_07.jpg" width="640" height="299" class="bg_img lazyload">
+            <img data-src="img/p_08.jpg" width="640" height="296" class="bg_img lazyload">
+            
+            
+            
+		</div>
+		<div class="main-box box-3">
+			  <img data-src="img/p_09.jpg" width="640" height="305" class="bg_img lazyload">
+            <img data-src="img/p_10.jpg" width="640" height="284" class="bg_img lazyload">
+            <img data-src="img/p_11.jpg" width="640" height="352" class="bg_img lazyload">
+            <img data-src="img/p_12.jpg" width="640" height="195" class="bg_img lazyload">
+            
+            
+		</div>
+		<div class="main-box box-4">
+			  <img data-src="img/p_13.jpg" width="640" height="266" class="bg_img lazyload">
+            <img data-src="img/p_14.jpg" width="640" height="265" class="bg_img lazyload">
+            <img data-src="img/p_15.jpg" width="640" height="311" class="bg_img lazyload">
+            <img data-src="img/p_16.jpg" width="640" height="294" class="bg_img lazyload">
+            
+            
+		</div>
+		<!--again-->
+		<div class="main-box box-5">
+			  <img data-src="img/p_17.jpg" width="640" height="319" class="bg_img lazyload">
+            <img data-src="img/p_18.jpg" width="640" height="312" class="bg_img lazyload">
+            <img data-src="img/p_19.jpg" width="640" height="247" class="bg_img lazyload">
+            <img data-src="img/p_20.jpg" width="640" height="258" class="bg_img lazyload">
+		</div>
+		<div class="main-box box-6">
+			 <img data-src="img/p_21.jpg" width="640" height="348" class="bg_img lazyload">
+            <img data-src="img/p_22.jpg" width="640" height="270" class="bg_img lazyload">
+            <img data-src="img/p_23.jpg" width="640" height="304" class="bg_img lazyload">
+            <img data-src="img/p_24.jpg" width="640" height="213" class="bg_img lazyload">
+		</div>
+		
+		
+		
+    </div>
+</div>
+<script>
+/*
+**每增加一个模块的时候，需在节点里添加一个main-box,以及对应的anim（）函数中的对应动画即可
+**如果需要禁用触摸滑屏的dom元素，就直接在该dom元素上添加class：notouch
+*/
+$(function(){
+	var config={
+		el:".main-box",//每一块的容器
+		isdebug:true,//是否开启console'
+		speed:500,//每一屏幕切换的速度
+		triggerdis:150,//触摸这个距离后才翻屏
+		eventlist:["touchstart","touchmove","touchend"],//touch事件列表
+		log:function(a){
+	        if(config.isdebug){console.log(a);}
+	    },//console事件debug模式
+		init:function(){
+			var _this=this;
+			$(_this.el).height($(window).height());
+			anim(0);
+		}//全局初始化函数
+	};
+	/*移动相关对象*/
+	var _move={
+		dis:0,//触摸时记录距离
+		dir:0,//滑屏的方向
+		touchtime:0,//触摸的次数，保证一个手指
+		canmove:true,
+		index:0//记录当前是第几屏
+	};
+	config.init();//全局初始化
+	/*图片自定义懒加载,当执行new时加载对应模块的图片*/
+	var lazyload=function(obj){
+		this.con=obj.container||$("body");
+		this.nodename=obj.node||".lazyload";
+		this.init=function(){
+			var _self=this;
+			$(_self.node).css("display","none");
+			this.con.find(_self.nodename).each(function(){
+				var src=$(this).attr("data-src");$(this).attr('src',src);$(this).fadeIn(1000);
+			});
+			delete this;
+		}
+		this.init();
+	};
+	// var lazy=new lazyload({container:$("body")});
+	/*每一屏初始化动画控制*/
+	function anim(index){
+	}
+	/*绑定触摸事件*/
+	var _touch={
+		cannottouth:function(){
+			//不用绑定触摸事件的地方取消绑定
+			$(".notouch").bind(config.eventlist[1],function(e){
+				_move.canmove=false;
+			});
+			$(".notouch").bind(config.eventlist[2],function(e){
+				_move.canmove=true;
+			});
+		},
+		touch:function(el,index){
+			var y1=0,y2=0;
+			$(el)[0].addEventListener(config.eventlist[0], function (e) {
+				/*touchstart，触摸开始*/
+				_move.index=index;
+				e.preventDefault(); 
+		        y1 = e.targetTouches[0].pageY;
+		        _move.dis=0;_move.dir=0;_move.touchtime+=1;
+		        //触摸开始时懒加载
+		        var lazy=new lazyload({container:$(el).next(config.el)});
+		    });
+		    $(el)[0].addEventListener(config.eventlist[2], function (e) {
+		    	/*touchend触摸结束后*/
+		    	if(_move.touchtime>=2){_move.touchtime=0;return false;}
+		    	e.preventDefault();_move.touchtime=0;
+		        if(_move.dis<0)
+		        {
+		        	if($(el).next(config.el).length>=1)
+		        	{
+		        		if(_move.dis<-config.triggerdis)
+			        	$(el).animate({'height':0},config.speed,function(){});
+			        	else
+			        	$(el).animate({'height':$(window).height()},config.speed);
+		        	}
+		        }
+		        else if(_move.dis>0)
+		        {
+		        	if($(el).prev(config.el))
+		        	{
+			        	if(_move.dis>config.triggerdis)
+			        	$(el).prev(config.el).animate({"height":$(window).height()},config.speed,function(){});
+			        	else
+			        	{
+			        		$(el).prev(config.el).animate({"height":0},config.speed);
+			        		$(el).animate({'height':$(window).height()},config.speed);
+			    		}	
+		    		}
+		        }
+		    });
+		    $(el)[0].addEventListener(config.eventlist[1], function (e) {
+		    	if(!_move.canmove)
+		    	{}
+		    	else
+		    	{
+			    	/*touchmove，滑屏过程中*/
+			    	e.preventDefault();
+			    	config.log(_move.touchtime);
+			    	if(_move.touchtime>=2){return false;}
+			    	y2=e.changedTouches[0].pageY;
+			       	_move.dis=y2-y1;
+			       	if(_move.dis>0)
+			        {
+			        	_move.dir=1;
+			        	var per=_move.dis;
+			        	if($(el).prev(config.el))
+			       		$(el).prev(config.el).css("height",per);
+			        }
+			    	else if(_move.dis<0)
+			    	{
+			    		_move.dir=0;
+			    		var per=$(window).height()+_move.dis;
+			    		if($(el).next(config.el).length>=1)
+			       		$(el).css("height",per);
+			    	}
+		   		}
+		    });
+		},
+		init:function(){
+			//初始化绑定
+			for(var i=0;i<$(config.el).length;i++)
+			{this.touch(".box-"+i,i);}
+			this.cannottouth();
+		}
+	};
+	_touch.init();
+});
+
+</script>
+</body>
+</html>
