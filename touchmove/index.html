@@ -20,7 +20,7 @@ html,body{height:100%;overflow:hidden;}
 .box-list{position:absolute;left:10%;top:10%;font-size:20px;color:#fff;display:none;height:20%;width:90%;}
 .box-list li{height:30px;line-height:30px;}
 .box-list img{width:80%;}
-.bg_img{width:100%;height:auto;display:inline-block;}
+.bg_img{width:100%;height:auto;display:block;}
 .animated{display:block !important;}/*保证动画后显示*/
 .lazyload{}
 .anims{display:none;}
@@ -50,14 +50,14 @@ html,body{height:100%;overflow:hidden;}
                 -moz-animation-play-state: paused;
                 -o-animation-play-state: paused;
             }
-			.cps_container img{ display:block;}
+			
 </style>
 </head>
 <body>
 <div class="module">
     <div class="cps_container">
 		
-		<div class="main-box box-1">
+		<div class="main-box box-0">
 			
             
           <img data-src="img/p_01.jpg" width="640" height="306" class="bg_img lazyload">
@@ -66,7 +66,7 @@ html,body{height:100%;overflow:hidden;}
           <img data-src="img/p_04.jpg" width="640" height="273" class="bg_img lazyload">
             
 	  </div>
-		<div class="main-box box-2">
+		<div class="main-box box-1">
 			
             
              <img data-src="img/p_05.jpg" width="640" height="302" class="bg_img lazyload">
@@ -77,7 +77,7 @@ html,body{height:100%;overflow:hidden;}
             
             
 		</div>
-		<div class="main-box box-3">
+		<div class="main-box box-2">
 			  <img data-src="img/p_09.jpg" width="640" height="305" class="bg_img lazyload">
             <img data-src="img/p_10.jpg" width="640" height="284" class="bg_img lazyload">
             <img data-src="img/p_11.jpg" width="640" height="352" class="bg_img lazyload">
@@ -85,7 +85,7 @@ html,body{height:100%;overflow:hidden;}
             
             
 		</div>
-		<div class="main-box box-4">
+		<div class="main-box box-3">
 			  <img data-src="img/p_13.jpg" width="640" height="266" class="bg_img lazyload">
             <img data-src="img/p_14.jpg" width="640" height="265" class="bg_img lazyload">
             <img data-src="img/p_15.jpg" width="640" height="311" class="bg_img lazyload">
@@ -94,23 +94,23 @@ html,body{height:100%;overflow:hidden;}
             
 		</div>
 		<!--again-->
-		<div class="main-box box-5">
+		<div class="main-box box-4">
 			  <img data-src="img/p_17.jpg" width="640" height="319" class="bg_img lazyload">
             <img data-src="img/p_18.jpg" width="640" height="312" class="bg_img lazyload">
             <img data-src="img/p_19.jpg" width="640" height="247" class="bg_img lazyload">
             <img data-src="img/p_20.jpg" width="640" height="258" class="bg_img lazyload">
 		</div>
-		<div class="main-box box-6">
+		<div class="main-box box-5">
 			 <img data-src="img/p_21.jpg" width="640" height="348" class="bg_img lazyload">
             <img data-src="img/p_22.jpg" width="640" height="270" class="bg_img lazyload">
             <img data-src="img/p_23.jpg" width="640" height="304" class="bg_img lazyload">
             <img data-src="img/p_24.jpg" width="640" height="213" class="bg_img lazyload">
 		</div>
 		
-		
+		  <div class="go-btn"></div>
 		
     </div>
-    <div class="go-btn"></div>
+  
 </div>
 <script>
 /*
