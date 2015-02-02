@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snap Scroll Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"  />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+
+    <style>
+*{margin:0;padding:0;vertical-align:baseline;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+img{border:0 none}
+i,em{font-style:normal}
+ol,ul{list-style:none}
+input,img{vertical-align:middle}
+input,select{font:inherit;font-size:100%}
+a{text-decoration:none;color:#333}
+body{margin:0 auto;min-width:320px;max-width:640px;height:100%;font-size:14px;font-family:"\5fae\8f6f\96c5\9ed1","Microsoft YaHei",Helvetica,Arial,sans-serif;line-height:1.5;color:#666;-webkit-text-size-adjust:100%;background:#E0E0E0;}
+.pages{position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden}
+.section{position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; color: #005580; font-size: 20px;background: url("http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/bg2.png") no-repeat;background-size: cover;}
+.section1{ background:url(img/p_1.jpg) no-repeat center bottom #3685fb;background-size: cover; }
+
+.show{display: block; z-index: 5}
+.active{display: block; z-index: 10;}
+
+.container{position:relative; max-width:640px; height:100%; margin:0 auto;overflow:hidden;}
+.container img{width:100%;}
+
+.logo{position:absolute;top:15px;left:15px; width:62px;height:31px;background:url(http://static.paipaiimg.com/fd/paipai/act/20141217_fasion/img/logo.png) no-repeat;background-size:62px 31px;}
+.arrow{position:absolute;bottom:10px;z-index:4;left:50%; width:22px;height:12px;margin-left:-11px;background:url(http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/arrow2.png) no-repeat;background-size:22px 12px;-webkit-animation:start 1.2s infinite linear; animation:start 1.2s infinite linear;}
+.audio_ico{opacity:0; position:absolute;z-index:5;width:25px;height:25px;left: 86%;top: 27%;background:url(http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/audio_ico.png) no-repeat;background-size:25px 25px;-webkit-transition:opacity .5s ease-in-out .3s ;}
+.audio_ico_stop{background:url(http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/audio_ico_stop.png);background-size:25px 25px;}
+
+.page_tit{opacity:0; position:absolute;left:50%;top:10%; width:60%;margin-left:-30%;
+    -webkit-animation-duration:.4s;
+            animation-duration:.4s;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+}
+.show .page_tit {opacity:1;-webkit-animation-name:fadeIn;animation-name:fadeIn;}
+
+.share_layer{display:none; position:fixed;z-index:99;top:0;left:0; width:100%;height:100%;background:rgba(33,79,137,.63);}
+.share_layer::after{content:""; position:absolute;right:10px;top:5px; width:145px;height:54px;background:url(http://static.paipaiimg.com/fd/paipai/act/20141217_fasion/img/share_tips.png) no-repeat;background-size:145px 54px;}
+.section1 .arrow{background-image:url(http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/arrow.png);}
+.section1 .audio_ico{opacity:0!important;}
+.section1 .audio_ico,
+.section2 .audio_ico,
+.section3 .audio_ico,
+.section4 .audio_ico,
+.section5 .audio_ico,
+.section6 .audio_ico,
+.section7 .audio_ico,
+.section8 .audio_ico,
+.section9 .audio_ico,
+.section10 .audio_ico,
+.section11 .audio_ico,
+.section12 .audio_ico,
+.section13 .audio_ico{top:15px;}
+.page_item1,
+.page_item2{opacity:0; position:absolute;left:50%; width:86%;margin-left:-43%;}
+
+.page_item1{top:28%;-webkit-animation-duration:.8s;animation-duration:.8s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards; -webkit-animation-delay:0.3s; }
+.page_item2{top:63%;-webkit-animation-duration:.8s;animation-duration:.8s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards;-webkit-animation-delay:0.6s;animation-delay:0.6s;}
+
+.section1 .tit{ position: absolute; z-index: 3; left: 356px; top: 209px; width: 60%; margin-left: -35%; -webkit-transition: all linear .8s; opacity: 0; }
+.section1 .tit::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background:#E0E0E0;-webkit-transition:all ease-in-out .8s ;}
+.section1 .sub_tit{opacity:0; position:absolute;z-index:3;left:50%;top:19%; width:70%;margin-left:-35%;}
+.section1 .sub_tit::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background:#E0E0E0;-webkit-transition:all .8s  ease-in-out .5s ;}
+
+.section1 .renwu1{ opacity: 0; position: absolute; z-index: 2; top: 177px; left: 0; width: 100%; margin-left: 0; -webkit-animation-duration: .8s; animation-duration: .8s; -webkit-animation-fill-mode: forwards; -webkit-animation-fill-mode: forwards; -webkit-animation-delay: 1s; }
+.section1 .renwu2{ opacity: 0; position: absolute; z-index: 2; top: 147px; left:01; width: 100%; margin-left: 0; -webkit-animation-duration: .8s; animation-duration: .8s; -webkit-animation-fill-mode: forwards; -webkit-animation-fill-mode: forwards; -webkit-animation-delay: 1.7s; }
+
+.page2_item{opacity:0; position:absolute;left:50%;top:28%; width:90%;margin-left:-45%;-webkit-animation-duration:.5s;animation-duration:.5s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards; -webkit-animation-delay:.6s;}
+.page2_btn{opacity:0;position:absolute;left:50%;top:82%; width:50%;margin-left:-25%;;-webkit-animation-duration:.5s;animation-duration:.5s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards; -webkit-animation-delay:1.2s;}
+.page2_tit2{opacity:0; position:absolute;left:50%;top:69%; width:70%;margin-left:-35%;;-webkit-animation-duration:.5s;animation-duration:.5s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards; -webkit-animation-delay:.9s;}
+.section14 .page2_tit2{width:30%;margin-left:-15%;}
+.show .page2_item{ -webkit-animation-name: fadeInRight;animation-name: fadeInRight;}
+.show .page2_tit2{ -webkit-animation-name: fadeInUp;animation-name: fadeInUp;}
+.show .page2_btn{ -webkit-animation-name: fadeInUp;animation-name: fadeInUp;}
+.section13{background:url(http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/fengdi_bg.png);background-size:cover;}
+
+
+.section13 .logo2{opacity:0; position:absolute;left:50%;top:30px; width:136px;height:68px;margin-left:-68px;background:url(http://static.paipaiimg.com/fd/paipai/act/20141217_fasion/img/logo2.png) no-repeat;background-size:135px 70px;-webkit-animation-duration:.8s;animation-duration:.8s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards;}
+.section13 .item{position:absolute;left:50%;top:25%;  width:76%;margin-left:-38%;}
+.section13 .ft_btns a{opacity:0; position:absolute;left:50%;top:63%; display:inline-block;width:110px;height:30px;-webkit-animation-duration:.8s;animation-duration:.8s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards;-webkit-animation-delay:0.5s;animation-delay:0.5s;}
+.section13 .ft_btns a.btn1{background:url(http://static.paipaiimg.com/fd/paipai/act/20141217_fasion/img/btn2.png) no-repeat;background-size:110px 30px;margin-left:-130px;}
+.section13 .ft_btns a.btn2{background:url(http://static.paipaiimg.com/fd/paipai/act/20141217_fasion/img/btn1.png) no-repeat;background-size:110px 30px;margin-left:18px;}
+.section13 .slogn{opacity:0; position:absolute;left:50%;top:75%;width:204px;height:77px;margin-left:-102px;background:url(http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/fengdi_tit2.png) no-repeat;background-size:204px 77px;-webkit-animation-duration:.8s;animation-duration:.8s;-webkit-animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards;-webkit-animation-delay:0.8s;animation-delay:0.8s;}
+
+
+.show .page_item1,
+.show .page_item2{/*-webkit-animation-name: flipInY;animation-name: flipInY;*/}
+.show .page_item1{-webkit-animation-name: fadeInRight;animation-name: fadeInRight;}
+.show .page_item2{-webkit-animation-name: fadeInLeft;animation-name: fadeInLeft;}
+.show .audio_ico{opacity:1;}
+.section1.loaded .audio_ico{opacity:1!important;}
+.section1.loaded .tit::after{-webkit-transform: translate3d(150%, 0, 0);}
+.section1.loaded .tit{opacity:1;}
+.section1.loaded .sub_tit::after{-webkit-transform: translate3d(150%, 0, 0);}
+.section1.loaded .sub_tit{opacity:1;}
+
+.section1.loaded .renwu2{-webkit-animation-name: fadeInUp;animation-name:  fadeInUp;}
+.section1.loaded .renwu1{ -webkit-animation-name: bounceIn;animation-name: bounceIn;}
+.section2.show .tit{  -webkit-animation-name: bounceIn;animation-name: bounceIn; }
+.section13.show .logo2{-webkit-animation-name: fadeIn ;animation-name: fadeIn ;}
+.section13.show .slogn{-webkit-animation-name: fadeInUp ;animation-name: fadeInUp ;}
+.section13.show .ft_btns a{-webkit-animation-name: flipInX ;animation-name: flipInX ;}
+@-webkit-keyframes start{
+    0%{ -webkit-transform:translate(0,-3px);}
+    30%{-webkit-transform:translate(0,-8px);}
+    100%{-webkit-transform:translate(0,-3px);}
+}
+
+@-webkit-keyframes bounceIn {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(.9, .9, .9);
+            transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+            transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(.97, .97, .97);
+            transform: scale3d(.97, .97, .97);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+@-webkit-keyframes flipInX {
+  0% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+            opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: perspective(400px);
+            transform: perspective(400px);
+            opacity: 1;
+  }
+}
+@-webkit-keyframes flipInY {
+  0% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: perspective(400px);
+            transform: perspective(400px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }  
+}
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+
+    </style>
+
+</head>
+<body>
+
+
+    <article id="J_pages" class="pages">
+        <section class="section show   section1 ">
+            <div class="container">
+              <div class="tit"><div class="inner"><img src="img/p_2.png" alt=""></div></div>
+               
+              <div class="renwu1"><img src="img/p_3.png" alt=""></div>
+              <div class="renwu2"><img src="img/p_4.png" alt=""></div>
+                <a href="###" class="audio_ico audio_ico_stop"></a>
+                <span class="arrow"></span>
+          </div>
+        </section>
+        <section class="section section2">
+            <div class="container">
+                <div class="logo"></div>
+                <div class="page_tit"><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page2_tit_1.png" alt=""></div>
+                <div class="page2_item"><a href="http://wd.paipai.com/mshop/2783459083?PTAG=12504.23.1" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page2_item2.png" alt=""></a></div>
+                <div class="page2_tit2"><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page2_tit2.png" alt=""></div>
+                <div class="page2_btn"><a href="http://wd.paipai.com/mshop/2783459083?PTAG=12504.23.1" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page2_btn.png" alt=""></a></div>
+                <a href="###" class="audio_ico audio_ico_stop"></a>
+                <span class="arrow"></span>
+            </div>
+        </section>
+        <section class="section section3">
+            <div class="container">
+                <div class="logo"></div>
+                <span class="arrow"></span>
+                <a href="###" class="audio_ico audio_ico_stop"></a>
+                <div class="page_tit"><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page3_tit.png" alt=""></div>
+                <div class="page_item1"><a href="http://wd.paipai.com/mshop/2920947974?PTAG=12504.23.3" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page3_item1.png" alt=""></a></div>
+                <div class="page_item2"><a href="http://wd.paipai.com/mshop/2329063229?PTAG=12504.23.2" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page3_item2.png" alt=""></a></div>
+            </div>
+        </section>
+        <section class="section section4">
+            <div class="container">
+                <div class="logo"></div>
+                <span class="arrow"></span>
+                <a href="###" class="audio_ico audio_ico_stop"></a>
+                <div class="page_tit"><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page4_tit.png" alt=""></div>
+                <div class="page_item1"><a href="http://wd.paipai.com/mshop/2049377875?PTAG=12504.23.4" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page4_item1.png" alt=""></a></div>
+                <div class="page_item2"><a href="http://wd.paipai.com/mshop/855000200?PTAG=12504.23.5" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page4_item2.png" alt=""></a></div>
+            </div>
+        </section>
+        <section class="section section5">
+            <div class="container">
+                <div class="logo"></div>
+                <span class="arrow"></span>
+                <a href="###" class="audio_ico audio_ico_stop"></a>
+                <div class="page_tit"><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page5_tit.png" alt=""></div>
+                <div class="page_item1"><a href="http://wd.paipai.com/mshop/855007206?PTAG=12504.23.6" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page5_item1.png" alt=""></a></div>
+                <div class="page_item2"><a href="http://wd.paipai.com/mshop/1586085995?PTAG=12504.23.7" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page5_item2.png" alt=""></a></div>
+            </div>
+        </section>
+        <section class="section section6">
+            <div class="container">
+                <div class="logo"></div>
+                <span class="arrow"></span>
+                <a href="###" class="audio_ico audio_ico_stop"></a>
+                <div class="page_tit"><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page6_tit.png" alt=""></div>
+                <div class="page_item1"><a href="http://wd.paipai.com/mshop/2985698478?PTAG=12504.23.8" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page6_item1.png" alt=""></a></div>
+                <div class="page_item2"><a href="http://wd.paipai.com/mshop/3021546746?PTAG=12504.23.9" title=""><img src="http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page6_item2.png" alt=""></a></div>
+            </div>
+        </section>
+        
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </article>
+    <div class="share_layer" id="shareLayer"></div>
+    <script src="http://static.paipaiimg.com/fd/paipai/act/20141217_fasion/js/zepto.min.js"></script>
+    <script src="http://static.paipaiimg.com/fd/paipai/act/20141217_fasion/js/zepto.snapscroll.js"></script>
+    <script src="http://static.gtimg.com/js/version/201412/paipai.h5.share.v3.201412091443.js" type="text/javascript" charset="utf-8" ></script>
+    <script>
+var imgReady = (function () {
+    var list = [], intervalId = null,
+
+    // 用来执行队列
+    tick = function () {
+        var i = 0;
+        for (; i < list.length; i++) {
+            list[i].end ? list.splice(i--, 1) : list[i]();
+        };
+        !list.length && stop();
+    },
+
+    // 停止所有定时器队列
+    stop = function () {
+        clearInterval(intervalId);
+        intervalId = null;
+    };
+
+    return function (url, ready, load, error) {
+        var onready, width, height, newWidth, newHeight,
+            img = new Image();
+        
+        img.src = url;
+
+        // 如果图片被缓存，则直接返回缓存数据
+        if (img.complete) {
+            ready.call(img);
+            load && load.call(img);
+            return;
+        };
+        
+        width = img.width;
+        height = img.height;
+        
+        // 加载错误后的事件
+        img.onerror = function () {
+            error && error.call(img);
+            onready.end = true;
+            img = img.onload = img.onerror = null;
+        };
+        
+        // 图片尺寸就绪
+        onready = function () {
+            newWidth = img.width;
+            newHeight = img.height;
+            if (newWidth !== width || newHeight !== height ||
+                // 如果图片已经在其他地方加载可使用面积检测
+                newWidth * newHeight > 1024
+            ) {
+                ready.call(img);
+                onready.end = true;
+            };
+        };
+        onready();
+        
+        // 完全加载完毕的事件
+        img.onload = function () {
+            // onload在定时器时间差范围内可能比onready快
+            // 这里进行检查并保证onready优先执行
+            !onready.end && onready();
+        
+            load && load.call(img);
+            
+            // IE gif动画会循环执行onload，置空onload即可
+            img = img.onload = img.onerror = null;
+        };
+
+        // 加入队列中定期执行
+        if (!onready.end) {
+            list.push(onready);
+            // 无论何时只允许出现一个定时器，减少浏览器性能损耗
+            if (intervalId === null) intervalId = setInterval(tick, 40);
+        };
+    };
+})();
+
+
+
+var imgListReady = function(imgArr,callback){
+    var i = 0;
+
+    function singleImgReady(){
+        if(i < imgArr.length){
+            imgReady(imgArr[i],function(){},function(){
+                
+                i++;
+                singleImgReady();
+
+            })
+        }else{
+            callback();
+        }
+      
+    }
+    singleImgReady();
+
+}
+
+var  getEnv = function(){
+    var ua = navigator.userAgent.toLowerCase();
+    if(/micromessenger(\/[\d\.]+)*/.test(ua)){
+        return "weixin"
+    }else if(/qq\/(\/[\d\.]+)*/.test(ua) || /qzone\//.test(ua)){
+        return "qq";
+    }else{
+        return "web";
+    }
+};
+
+
+
+var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+            }, function() {
+                callback('timeline');
+            });
+        });
+
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid":appid || "",
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+            }, function() {
+                callback('appmessage');
+            })
+
+        });
+
+
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+          WeixinJSBridge.invoke('shareWeibo',{
+             "content":title,
+             "url":link
+          }, function(res){
+            callback('weibo');
+          });
+        });
+
+        WeixinJSBridge.on('menu:share:facebook', function(argv){
+          (dataForWeixin.callback)();
+          WeixinJSBridge.invoke('shareFB',{
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+          }, function(res){
+            callback('facebook');
+          });
+        });
+
+
+
+    })
+
+
+};
+
+
+imgListReady(['http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/fengmian_bg.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page1_item.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit1.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit2.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit3.png'],function(){
+    $('.section1').addClass('loaded');        
+})
+
+var $pages  = $('#J_pages');
+$pages.snapscroll({
+    scroll:'v',
+    loop: true,
+    scrollMode : 'scale'
+});
+
+var hash = window.location.hash;
+if(hash.indexOf('#page') > -1){
+    $pages.snapscroll('goTo',parseInt(hash.substring(5)));    
+}
+
+$pages.on('done:SnapScroll',function(e,curIndex,newIndex,direction){
+    if(curIndex == 0){
+        $('.section1').removeClass('loaded');    
+    }
+    if(newIndex ==0){
+        $('.section1').addClass('loaded');   
+    }
+    window.newIndex = newIndex;
+    window.location.hash = '';
+});      
+
+            
+/**
+ * 公众号链接判断
+ */
+var env = getEnv();
+if(env == 'weixin'){
+    $('#ppMpLink').attr('href','http://mp.weixin.qq.com/s?__biz=MjM5MTI5NjI2MA==&mid=200860965&idx=1&sn=0608e210f97905d61f6b446daf098ff7#rd');
+}else{
+    $('#ppMpLink').attr('href','http://www.paipai.com/m2/my/fuwuhao.shtml?_wv=1');
+}
+
+
+
+
+$('#shareLink').on('touchend',function(event){
+  event.preventDefault();
+  var ua = navigator.userAgent;
+  if(ua.indexOf('iPhone') > -1 && ua.indexOf('NewsApp') > -1){
+      paipai_h5_share.init({
+        hideQQ: false,
+        hideQzone: false,
+        hideWX: false,
+        hideWXFriend: false,
+        hideTqq: false,
+        qq: {
+          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
+          desc: '高段位的生活，完美生活风向标！',
+          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
+          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
+          ptag: ""
+        },
+        qzone: {
+          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
+          desc: '高段位的生活，完美生活风向标！',
+          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
+          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
+          ptag: "12475.18.2"
+        },
+        weixin: {
+          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
+          desc: '高段位的生活，完美生活风向标！',
+          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
+          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
+          ptag: "12475.18.3"
+        },
+        weixinFriend: {
+          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
+          desc: '高段位的生活，完美生活风向标！',
+          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
+          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
+          ptag: ""
+        },
+        tqq: {
+          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
+          desc: '高段位的生活，完美生活风向标！',
+          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
+          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
+          ptag: ""
+        }
+      });    
+  }else{
+    $('#shareLayer').show();
+  }
+
+
+  
+})
+
+$('#shareLayer').on('touchend',function(event){
+  event.preventDefault();
+  $(this).hide();
+})
+
+/**
+ * 音乐播放
+ */
+var audio = document.createElement("audio");
+audio.src = "http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/music.mp3";
+audio.autoplay = false;
+audio.loop = true;
+audio.addEventListener("canplaythrough",function() {
+    audio.play();
+    $('.audio_ico').removeClass('audio_ico_stop'); 
+},false);
+
+// 手Q微信需要手动触发播放
+
+var flag = 0;
+$('body').on('touchstart', function(event) {
+
+    if(!$(event.target).hasClass('audio_ico')){
+        if(flag == 0 && audio.paused){
+            audio.play();
+            $('.audio_ico').toggleClass('audio_ico_stop');
+        }
+        flag = 1;
+    }
+});
+
+$('.audio_ico').on('touchend',function(event){
+    event.preventDefault();
+    
+    if($(this).hasClass('audio_ico')){
+        if(audio.paused){
+            audio.play();
+        }else{
+            audio.pause();
+        }
+        $('.audio_ico').toggleClass('audio_ico_stop');        
+    }
+},false);
+
+$('.page_item1,.page_item2,.bd,.page2_item,.page2_btn').on('click',function(event){
+  window.location.hash = 'page' + window.newIndex;
+});
+
+
+
+ wxShare('http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',100,100,'http://www.paipai.com/promote/2014/pro_167.shtml','高段位的生活，完美生活风向标|拍拍微店|京东旗下拍拍网','随时随地逛拍拍微店，玩转移动购物！汇集潮流时尚品牌，带给您全新购物体验。');
+
+
+
+
+    </script>
+</body>
+</html>
