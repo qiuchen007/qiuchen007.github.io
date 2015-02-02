@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html>
+<title></title>
+<head>    
+<link type="text/css" href="http://assets.taobaocdn.com/tbsp/reset-grids.css" rel="stylesheet" />
+<script src="http://g.tbcdn.cn/??kissy/k/1.4.1/seed-min.js,mui/global/1.2.35/global.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="animate.css" type="text/css">
+<style type="text/css">
+html,body{height:100%;overflow:hidden;}
+.cps_container ul,.cps_container li,body,.cps_container p,iframe,dl,dt,dd{ padding: 0; margin: 0; }
+.cps_container ul,.cps_container li{list-style-type: none}
+.cps_container img{border: 0;width:100%;}
+.cps_container a{ text-decoration: none}
+.cps_container a:hover{ text-decoration: none}   
+.cps_container{ background: #FFFFFF; margin: 0 auto;min-width: 320px; max-width: 640px; position: relative;height:100%;}
+.cps_container img{}
+.main-box{width:100%;height:100%;position:relative;z-index:1;background-size:auto auto;text-align:center;overflow:hidden;}
+.box-wrapper{height:100%;overflow:hidden;position:relative;z-index:1;}
+.main-box img{width:100%;}
+.relative{position:relative;z-index:1;}
+.removeable{display:none;}
+.animated{display:block !important;}
+.i-arrow{position:absolute;left:0;bottom:-5%;}
+
+.main-box-0{background-color:#ff5001;}
+.main-box-1{background-color:#344dcc;}
+.main-box-2{background-color:#d51eb4;}
+.main-box-3{background-color:#699713;}
+.main-box-4{background-color:#fc2a75;}
+.main-box-5{background-color:#583c86;}
+.main-box-6{background-color:#ff6d00;}
+.main-box-7{background-color:#ec2b2c;}
+.main-box-8{background-color:#00ae9f;}
+.main-box-9{background-color:#9f15ff;}
+.main-box-10{background-color:#67523f;}
+
+.box0-contain{position:absolute;left:0;top:17%;z-index:5;}
+.box0-text{position:absolute;z-index:9;left:0;bottom:25%;}
+
+.box1-contain{position:relative;z-index:1;}
+.box1-lefthand{position:absolute;z-index:2;left:0;bottom:0;}
+.box1-righthand{position:absolute;z-index:3;left:0;bottom:0;}
+.box1-text{position:absolute;z-index:9;left:0;bottom:15%;}
+
+.box2-paper{}
+.box2-man,.box2-paper{position:absolute;z-index:2;left:0;bottom:5%;}
+.box2-text{position:absolute;z-index:99;left:0;bottom:12%;}
+
+.box3-contain{height:50%;}
+.box3-man{position:absolute;left:0;top:0;z-index:2;}
+.box3-radio{position:absolute;z-index:1;left:0;top:79%;}
+.box3-music{position:absolute;z-index:3;left:0;top:20%;}
+.box3-text{position:absolute;left:0;bottom:10%;z-index:5;}
+
+.box4-bg{position:absolute;z-index:2;top:5%;left:0;}
+.box4-text{position:absolute;z-index:3;left:0;bottom:14%;}
+
+.box5-tv{position:absolute;z-index:2;left:0;top:10%;}
+.box5-man{position:absolute;z-index:3;left:0;top:30%;}
+.box5-text{position:absolute;z-index:4;left:0;bottom:10%;}
+
+.box6-bg,.box6-man,.box6-money,.box6-text{position:absolute;left:0;}
+.box6-bg{z-index:2;top:5%;}
+.box6-man{z-index:3;top:10%;}
+.box6-money{z-index:4;top:5%;}
+.box6-text{z-index:5;bottom:10%;}
+
+.box7-mirr,.box7-man,.box7-cir,.box7-text{position:absolute;left:0;}
+.box7-mirr{z-index:2;top:25%;}
+.box7-man{z-index:3;top:10%;}
+.box7-cir{z-index:4;top:32%;}
+.box7-text{z-index:5;bottom:10%;}
+
+.box8-grass,.box8-cloud,.box8-man,.box8-moca,.box8-text{position:absolute;left:0;}
+.box8-grass{z-index:2;top:38%;}
+.box8-cloud{z-index:3;top:5%;}
+.box8-man{z-index:4;top:14%;}
+.box8-moca{z-index:5;top:15%;}
+.box8-text{z-index:9;bottom:10%;}
+
+.box9-love,.box9-man,.box9-text{position:absolute;left:0;}
+.box9-love{z-index:2;top:10%;}
+.box9-man{z-index:3;top:10%;}
+.box9-text{z-index:4;bottom:10%;}
+
+.box10-title,.box10-video,.box10-text{position:absolute;left:0;}
+.box10-title{top:9%;z-index:2;}
+.box10-video{top:21%;z-index:3;}
+.box10-text{bottom:15%;z-index:4;}
+.box10-vw{width:205px;height:135px;position:absolute;z-index:10;left:50%;margin-left:-99px;top:42%;background:#000;}
+.box10-video img{display:block;}
+.box10-vv{position:relative;z-index:11;}
+.box10-vv .vi_contain{background:#000;height:100%;position:absolute;width:63%;left:20%;top:0;}
+
+.loading{width:100%;height:100%;background:#fff url("http://gtms04.alicdn.com/tps/i4/TB1xceKGVXXXXaVXFXXBStGGXXX-32-32.gif") center no-repeat;position:absolute;left:0;top:0;z-index:9999;}
+</style>
+<link rel="stylesheet" href="anim.css" type="text/css" />
+</head>
+<body>
+<div class="module" data-spm="$spm_module_id">
+  <div class="loading"></div>    
+  <div class="cps_container">
+    <div class="main-box main-box-0">
+        <div class="box-wrapper">
+            <img src="images/box1_1.png" class="box0-logo removeable" />
+            <div class="box0-contain">
+                <img src="images/box1_12.png" class="box0-man removeable" />
+            </div>
+            <div class="box0-text">
+                <img src="images/box1_14.png" class="box0-text1 removeable" />
+                <img src="images/box1_15.png" class="box0-text2 removeable" />
+            </div>
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-1">
+        <div class="box-wrapper">
+            <div class="box1-contain relative">
+                <img data-src="images/box2_01.png" class="box1-snow lazyload removeable" />
+                <img data-src="images/box2_03.png" class="box1-lefthand lazyload removeable" />
+                <img data-src="images/box2_1_03.png" class="box1-righthand lazyload removeable" />
+            </div>
+            <img data-src="images/box2_17.png" class="lazyload box1-text removeable" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-2">
+        <div class="box-wrapper">
+            <div class="box2-contain relative">
+                <img data-src="images/box3-3.png" class="box2-bg lazyload" />
+                <img data-src="images/box3-2.png" class="box2-paper lazyload removeable" />
+                <img data-src="images/box3-1.png" class="box2-man lazyload removeable" />
+            </div>
+            <img data-src="images/box3-4.png" class="box2-text lazyload removeable" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-3">
+        <div class="box-wrapper">
+            <div class="box3-contain relative">
+                <img data-src="images/box4-3.png" class="box3-man lazyload removeable" />
+                <img data-src="images/box4-1.png" class="box3-radio lazyload removeable" />
+                <img data-src="images/box4-2.png" class="box3-music lazyload removeable" />
+            </div>
+            <img data-src="images/box4-4.png" class="box3-text lazyload removeable" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-4">
+        <div class="box-wrapper">
+            <img data-src="images/box5-1.png" class="box4-bg removeable lazyload" />
+            <img data-src="images/box5-2.png" class="box4-text removeable lazyload" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-5">
+        <div class="box-wrapper">
+            <img data-src="images/box6-1.png" class="box5-tv removeable lazyload" />
+            <img data-src="images/box6-2.png" class="box5-man removeable lazyload" />
+            <img data-src="images/box6-3.png" class="box5-text removeable lazyload" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-6">
+        <div class="box-wrapper">
+            <img data-src="images/box7-2.png" class="box6-bg removeable lazyload" />
+            <img data-src="images/box7-1.png" class="box6-man removeable lazyload" />
+            <img data-src="images/box7-3.png" class="box6-money removeable lazyload" />
+            <img data-src="images/box7-4.png" class="box6-text removeable lazyload" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-7">
+        <div class="box-wrapper">
+            <img data-src="images/box8-1.png" class="box7-mirr removeable lazyload" />
+            <img data-src="images/box8-2.png" class="box7-man removeable lazyload" />
+            <img data-src="images/box8-3.png" class="box7-cir removeable lazyload" />
+            <img data-src="images/box8-4.png" class="box7-text removeable lazyload" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-8">
+        <div class="box-wrapper">
+            <img data-src="images/box9-1.png" class="box8-grass removeable lazyload" />
+            <img data-src="images/box9-3.png" class="box8-cloud removeable lazyload" />
+            <img data-src="images/box9-2.png" class="box8-man removeable lazyload" />
+            <img data-src="images/box9-4.png" class="box8-moca removeable lazyload" />
+            <img data-src="images/box9-5.png" class="box8-text removeable lazyload" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-9">
+        <div class="box-wrapper">
+            <img data-src="images/box10-1.png" class="box9-love removeable lazyload" />
+            <img data-src="images/box10-2.png" class="box9-man removeable lazyload" />
+            <img data-src="images/box10-3.png" class="box9-text removeable lazyload" />
+            <div class="i-arrow anim_arrow"><img src="images/box1_19.png" /></div>
+        </div>
+    </div>
+    <div class="main-box main-box-10">
+        <div class="box-wrapper">
+            <img data-src="images/box11-1.png" class="box10-title lazyload" />
+            <div class="box10-video">
+                <img data-src="images/video_01.jpg" class="lazyload" />
+                <div class="box10-vv">
+                    <img data-src="images/video_02.jpg" class="lazyload" />
+                    <p class="vi_contain"></p>
+                </div>
+                <img data-src="images/video_03.jpg" class="lazyload" />
+            </div>
+            <img data-src="images/box11-3.png" class="box10-text lazyload" />
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+function start(){
+   KISSY.use("node",function(S,Node){
+        var $=S.all;
+        /*配置对象*/
+        var config={
+            el:".main-box",
+            isdebug:true,
+            speed:0.3,
+            triggerdis:100,
+            isani:false,
+            eventlist:["touchstart","touchmove","touchend"],
+            log:function(a){
+                if(config.isdebug){console.log(a);$(".show").html(a);}
+            },
+            init:function(){
+                var _this=this;
+                $(_this.el).add(".box-wrapper").height($(window).height());
+                anim(0);
+            }
+        };
+        /*每一屏初始化动画控制*/
+        function anim(index){
+            function _init(){$(".removeable").removeClass("wobble fadeIn rotateIn tada shake rollIn zoomIn bounce pulse bounceInLeft bounceInUp bounceInDown bounceInRight flash delay1 delay2 delay3 animated");};
+            _init();
+            switch(index){
+                case 0:$(".box0-logo").addClass("bounceInLeft animated");$(".box0-man").addClass("pulse animated");$(".box0-text1").addClass("bounceInUp delay1 animated");$(".box0-text2").addClass("bounceInUp delay2 animated");break;
+                case 1:$(".box1-snow").addClass(".bounce animated");$(".box1-lefthand").addClass(".bounceInLeft delay1 animated");$(".box1-righthand").addClass(".bounceInRight delay1 animated");$(".box1-text").addClass(".bounceInDown delay1 animated");break;
+                case 2:$(".box2-man").addClass(".zoomIn animated");$(".box2-paper").addClass(".bounceInRight animated");$(".box2-text").addClass("rollIn delay1 animated");break;
+                case 3:$(".box3-man").addClass("shake animated");$(".box3-radio").addClass("shake animated");$(".box3-music").addClass("pulse animated");$(".box3-text").addClass("tada animated");break;
+                case 4:$(".box4-bg").addClass("pulse animated");$(".box4-text").addClass("rotateIn animated");break;
+                case 5:$(".box5-tv").addClass("bounceInDown animated");$(".box5-man").addClass("bounceInLeft animated");$(".box5-text").addClass("bounceInRight animated delay1");break;
+                case 6:$(".box6-bg").addClass("fadeIn animated");$(".box6-man").addClass("zoomIn animated");$(".box6-money").addClass("bounceInDown delay1 animated");$(".box6-text").addClass("bounceInUp animated");break;
+                case 7:$(".box7-mirr").addClass("fadeIn animated");$(".box7-man").addClass("zoomIn animated");$(".box7-cir").addClass("bounceInDown delay1 animated");$(".box7-text").addClass("bounceInUp animated");break;
+                case 8:$(".box8-grass").addClass("fadeIn animated");$(".box8-cloud").addClass("zoomIn animated");$(".box8-man").addClass("shake animated");$(".box8-moca").addClass("shake delay1 animated");$(".box8-text").addClass("bounceInUp animated");break;
+                case 9:$(".box9-love").addClass("bounceInDown delay1 animated");$(".box9-man").addClass("zoomIn animated");$(".box9-text").addClass("wobble animated");break;
+                default:_init();
+            }
+        }
+        config.init();//全局初始化
+        /*图片自定义懒加载,当执行new时加载对应模块的图片*/
+        var lazyload=function(obj){
+            this.con=obj.container||$("body");
+            this.nodename=obj.node||".lazyload";
+            this.init=function(){
+                var _self=this;
+                this.con.all(_self.nodename).each(function(){
+                    var src=$(this).attr("data-src");
+                    $(this).attr('src',src);
+                });
+                delete this;
+            }
+            this.init();
+        };
+        //移动相关对象
+        var _move={
+            dis:0,
+            dir:0,
+            touchtime:0,
+            index:0
+        };
+        //绑定触摸事件
+        var _touch={
+            touch:function(el,index){
+                var y1=0,y2=0;
+                $(el)[0].addEventListener(config.eventlist[0], function (e) {
+                    //touchstart
+                    _move.index=index;
+                    e.preventDefault(); 
+                    y1 = e.targetTouches[0].pageY;
+                    _move.dis=0;_move.dir=0;_move.touchtime+=1;
+                     //触摸开始时懒加载
+                    var lazy=new lazyload({container:$(el).next(config.el)});
+                });
+                $(el)[0].addEventListener(config.eventlist[2], function (e) {
+                    //touchend
+                    if(_move.touchtime>=2){_move.touchtime=0;return false;}
+                    e.preventDefault();_move.touchtime=0;
+                    if(_move.dis<0)
+                    {
+                        if($(el).next(config.el))
+                        {
+                            if(_move.dis<-config.triggerdis)
+                            $(el).animate({'height':0},config.speed,'easing',function(){anim(index+1);});
+                            else
+                            $(el).animate({'height':$(window).height()},config.speed);
+                        }
+                    }
+                    else if(_move.dis>0)
+                    {
+                        if($(el).prev(config.el))
+                        {
+                            if(_move.dis>config.triggerdis)
+                            $(el).prev(config.el).animate({"height":$(window).height()},config.speed,'easing',function(){anim(index-1);});
+                            else
+                            {
+                                $(el).prev(config.el).animate({"height":0},config.speed);
+                                $(el).animate({'height':$(window).height()},config.speed);
+                            }   
+                        }
+                    }
+                });
+                $(el)[0].addEventListener(config.eventlist[1], function (e) {
+                    //touchmove
+                    e.preventDefault();
+                    config.log(_move.touchtime);
+                    if(_move.touchtime>=2){return false;}
+                    y2=e.changedTouches[0].pageY;
+                    _move.dis=y2-y1;
+                    if(_move.dis>0)
+                    {
+                        _move.dir=1;
+                        var per=_move.dis;
+                        if($(el).prev(config.el))
+                        $(el).prev(config.el).css("height",per);
+                    }
+                    else if(_move.dis<0)
+                    {
+                        _move.dir=0;
+                        var per=$(window).height()+_move.dis;
+                        if($(el).next(config.el))
+                        $(el).css("height",per);
+                    }
+                });
+            },
+            init:function(){
+                for(var i=0;i<$(config.el).length;i++)
+                {
+                    this.touch(".main-box-"+i,i);
+                }
+            }
+        };
+        _touch.init();
+        //取消loading  
+        $(".loading").fadeOut(0.5,function(){$(".loading").remove()});
+    }); 
+};
+window.onload=function(){
+    start();
+};
+
+</script>
+</body>
+</html>
