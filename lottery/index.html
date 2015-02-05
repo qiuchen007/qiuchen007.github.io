@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>{#title#}</title>
+    <style>
+		*{margin:0;padding:0}
+
+		body{ width: 320px;margin:0 auto; font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";font-size:14px;line-height:1.4;color:#838383;}
+		.J_wrapper{background-color:#ff3f2a;}
+		.clear{ clear: both;height: 0;}
+		i{font-style:normal}
+		fieldset,img{border:0;vertical-align:middle}
+		a{text-decoration:none;color:#fff}
+		ul,li{list-style:none}
+		header,footer,section{display:block}
+		section{position:relative;width:100%;overflow:hidden}
+		strong{font-weight:600}
+		section{margin-top:0}
+		header,article{position:relative;width:290px;margin:0 auto}
+		#rule{counter-reset:number;padding:10px;overflow:hidden;font-size:13px;color:#888;background-color:#fff;border-radius:6px;border:1px solid #d7d7d7;margin:0 10px}
+		#rule dt{margin-bottom:12px;font-size:14px;color:#444;text-align:center}
+		#rule dd{margin-left:21px;position:relative}
+		#rule dd::before{content:counter(number) '.';counter-increment:number;position:absolute;top:0;left:-16px}
+		.slidedown{height:134px}
+		#more{position:absolute;right:0;bottom:0;left:0;height:32px;margin:auto}
+		#more span{position:absolute;top:0;right:0;left:0;width:16px;height:17px;margin:auto;border-top:2px solid #999;border-left:2px solid #999;-webkit-transition:all .5s ease-in-out}
+		.down{bottom:12px;-webkit-transform:rotate(225deg) skewX(175deg)}
+		.up{bottom:-12px;-webkit-transform:rotate(45deg) skewX(175deg)}
+		.icon-h{position:absolute;top:2px;left:25px;width:51px;height:51px;border-radius:51px;text-align:center;line-height:50px;background-color:#444}
+		.mod_act{z-index:10;position:fixed;top:0;left:50%;width:240px;height:42px;margin-left:-121px;border-radius:4px;text-align:left;background:rgba(251,240,203,0.85);box-shadow:0 0 3px #c6c6c2}
+		.mod_act a{color:#dd4e42}
+		
+		/*商品组*/
+		.content{padding: 10px;overflow:hidden;background-color: {#bgcolor#};}
+		 .mod_normal .txt_wrap .price strong {margin-right:12px;color:#c83d00;font-size:2em;}
+	    .mod_normal, .mod_more {overflow:hidden;background-color:#F4F4F4;}
+	    .mod_normal .normal_hd, .mod_more .more_hd {height:41px;padding-left:10px;border-bottom:1px #D3D3D3 solid;line-height:41px;color:#13749f;font-size:1em;}
+	    .mod_normal .normal_bd a {float:left;width:159px;height:238px;border-right:1px #D3D3D3 solid;border-bottom:1px #D3D3D3 solid;background-color:#F4F4F4; overflow: hidden;}
+	    .mod_normal .normal_bd a:nth-of-type(even) {width:160px;border-right:none;}
+	    @media screen and (orientation:landscape) {
+	      .mod_normal .normal_bd a:nth-of-type(even) {width:159px;border-right:1px #D3D3D3 solid;}
+	    }
+	    .mod_normal .normal_bd .img_wrap {height:150px;background-color:#fff;text-align:center;line-height:145px;}
+	    .mod_normal .normal_bd .img_wrap img {vertical-align:middle;}
+	    .mod_normal .normal_bd .txt_wrap {height:78px;padding:10px 10px 0 10px;font-size:0.85714em;border-right:1px #fff solid;}
+	    .mod_normal .normal_bd a:nth-of-type(even) .txt_wrap {border-right:none;}
+	    .mod_normal .normal_bd .name {overflow:hidden;height:29px;margin-bottom:7px;line-height:14px;color:#444;word-wrap:break-word;word-break:break-all;}
+	    .mod_normal .normal_bd .desc {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;word-wrap:break-word;word-break:break-all;height:21px;color:#999;}
+	    .mod_normal .txt_wrap .price {color:#999;font-size:0.916666em;}
+	    .mod_normal .txt_wrap .price strong{font-size:1.416666em;}
+	    .mod_normal .txt_wrap .price span{text-decoration:line-through;}
+		.floor-1 img,#choujiang img{ border: 0; display: block; width: 100%;}
+		.floor-1 a img{ float: left; width: 50%; height: 20px;}
+		floor-4 h3{font-size:18px;color:#444;padding-left:38px;line-height:20px;margin:2px 0 10px;font-weight:normal}
+		.floor-4 p{font-size:16px;padding-left:38px;font-weight:700;color:#444}
+		.floor-4 .num{color:#ff8a02;font-weight:700}
+		.lottery{position:relative;height: 296px; margin: 0 10px; }
+		.lottery ul{ position: relative; height: 100%;margin-left: 6px;}
+		.lottery li{ position: absolute;width:96px;height:96px; float: left; background:url(a_7.png) no-repeat;background-size:288px 288px;-webkit-background-size:288px 288px}
+		li.item1{left:0;top:0;background-position:0 0}
+		li.item2{left:96px;top:0;background-position:-96px 0}
+		li.item3{left:192px;top:0;background-position:-192px 0}
+		li.item4{left:192px;top:96px;background-position:-192px -96px}
+		li.item5{left:192px;top:192px;background-position:-192px -192px}
+		li.item6{left:96px;top:192px;background-position:-96px -192px}
+		li.item7{left:0;top:192px;background-position:0 -192px}
+		li.item8{left:0;top:96px;background-position:0 -96px}
+		.lottery a.act{position:absolute;background:url(a_6.png) 0 0 no-repeat;background-size:98px 196px;-webkit-background-size:98px 196px;left:100px;top:94px;width:98px;height:98px}
+		.lottery a.act_actived{background-position:0 -98px}
+		@-webkit-keyframes item1{0%{-webkit-transform:rotateY(0deg)}
+		50%{-webkit-transform:rotateY(180deg)}
+		100%{-webkit-transform:rotateY(360deg)}
+		}
+		.fx_item1{-webkit-animation-name:item1}
+		@-webkit-keyframes shy{0%{box-shadow:0 0 15px rgba(100,100,100,0.5)}
+		100%{box-shadow:0 0 50px rgba(100,100,100,0.5)}
+		}
+		@-webkit-keyframes item2{0%{-webkit-transform:rotateY(0deg)}
+		50%{-webkit-transform:rotateY(180deg)}
+		100%{-webkit-transform:rotateY(360deg)}
+		}
+		.fx_item2{-webkit-animation-name:item2}
+		@-webkit-keyframes item3{0%{-webkit-transform:rotateX(0deg)}
+		50%{-webkit-transform:rotateX180deg)}
+		100%{-webkit-transform:rotateX(360deg)}
+		}
+		.fx_item3{-webkit-animation-name:item3}
+		@-webkit-keyframes item4{0%{-webkit-transform:rotateX(0deg)}
+		50%{-webkit-transform:rotateX(180deg)}
+		100%{-webkit-transform:rotateX(360deg)}
+		}
+		.fx_item4{-webkit-animation-name:item4;-webkit-animation-duration:300ms;-webkit-animation-timing-function:ease-in-out;-webkit-animation-delay:1s;-webkit-animation-iteration-count:1}
+		@-webkit-keyframes item5{0%{-webkit-transform:rotateY(0deg)}
+		50%{-webkit-transform:rotateY(180deg)}
+		100%{-webkit-transform:rotateY(360deg)}
+		}
+		.fx_item5{-webkit-animation-name:item5}
+		@-webkit-keyframes item6{0%{-webkit-transform:rotateY(0deg)}
+		50%{-webkit-transform:rotateY(180deg)}
+		100%{-webkit-transform:rotateY(360deg)}
+		}
+		.fx_item6{-webkit-animation-name:item6}
+		@-webkit-keyframes item7{0%{-webkit-transform:rotateY(0deg)}
+		50%{-webkit-transform:rotateX(180deg)}
+		100%{-webkit-transform:rotateX(360deg)}
+		}
+		.fx_item7{-webkit-animation-name:item7}
+		@-webkit-keyframes item8{0%{-webkit-transform:rotateY(0deg)}
+		50%{-webkit-transform:rotateX(180deg)}
+		100%{-webkit-transform:rotateX(360deg)}
+		}
+		.fx_item8{-webkit-animation-name:item8}
+		.fx_item1,.fx_item2,.fx_item3,.fx_item4,.fx_item5,.fx_item6,.fx_item7,.fx_item8{-webkit-animation-duration:500ms;-webkit-animation-timing-function:ease-in-out;-webkit-animation-delay:1s;-webkit-animation-iteration-count:infinite}
+		@-webkit-keyframes item1{0%{-webkit-transform:rotateY(0deg)}
+		50%{-webkit-transform:rotateY(180deg)}
+		100%{-webkit-transform:rotateY(360deg)}
+		}
+		.fx_zhuanpan li{-webkit-animation-name:item1;-webkit-animation-duration:500ms;-webkit-animation-timing-function:ease-in-out;-webkit-animation-iteration-count:1}
+		.fx_zhuanpan li.item1{-webkit-animation-delay:0ms}
+		.fx_zhuanpan li.item2{-webkit-animation-delay:100ms}
+		.fx_zhuanpan li.item3{-webkit-animation-delay:200ms}
+		.fx_zhuanpan li.item4{-webkit-animation-delay:300ms}
+		.fx_zhuanpan li.item5{-webkit-animation-delay:400ms}
+		.fx_zhuanpan li.item6{-webkit-animation-delay:500ms}
+		.fx_zhuanpan li.item7{-webkit-animation-delay:600ms}
+		.fx_zhuanpan li.item8{-webkit-animation-delay:700ms}
+		/* faxian */
+		.m-fx{width:300px;line-height:20px;font-size:13px;text-align:center;padding:15px 0;margin:7px auto 0;white-space:nowrap;border:1px solid #e5e5e5;border-radius:4px;}
+		.m-fx span,.m-fx b{color:#dd4e42}
+		
+		.maskactived .maskbg{display:block}
+		.maskactived .mask{display:block}
+		.mask{display:none;z-index:1000;position:fixed;top:50%;margin-top:-100px;left:0;width:100%;color:#222}
+		.maskbg{display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-color:rgba(0,0,0,.6)}
+		.mask .inner{position:absolute;width:100%;top:0;left:0;color:#666;z-index:100}
+		.mask .inner .highlight{color:#cb7c19;font-weight:700}
+		.mask .mod_pop{position:relative;width:250px;padding:4px;margin:0 auto;border-radius:8px;background-color:#ee6b01;line-height:1}
+		.mask .pop_inner{width:248px;min-height:168px;background-color:#fdf3d7;border:1px #ba6e0c solid;border-radius:8px;-webkit-box-shadow:0 1px 0 #fcf6eb inset}
+		.mask .btn_strong,.mask .btn_normal,.mask .btn_close{overflow:hidden;display:inline-block;width:284px;height:40px;line-height:38px;font-size:16px;border:1px #c66100 solid;color:#fff;font-weight:bold;border-radius:5px;text-align:center;background:-webkit-gradient(linear,left top,left bottom,from(#ffa411),to(#f17d11));background:-webkit-linear-gradient(top,#ffa411,#f17d11);background:-moz-linear-gradient(top,#ffa411,#f17d11);background:-ms-linear-gradient(top,#ffa411,#f17d11);background:-o-linear-gradient(top,#ffa411,#f17d11)}
+		.mask .btn_strong{-webkit-box-shadow:0 1px 0 #ffbe59 inset}
+		.mask .btn_normal{color:#444;border-color:#d0d0d0;background:-webkit-gradient(linear,left top,left bottom,from(#f6f6f6),to(#ededed));background:-webkit-linear-gradient(top,#f6f6f6,#ededed);background:-moz-linear-gradient(top,#f6f6f6,#ededed);background:-ms-linear-gradient(top,#f6f6f6,#ededed);background:-o-linear-gradient(top,#f6f6f6,#ededed);-webkit-box-shadow:1px 1px 0 #fff inset,-1px -1px 0 #fff inset}
+		.mask .btn .long{width:138px}
+		.mask .btn .all{width:228px}
+		.mask .btn .short{width:75px}
+		.mask .mod_pop dl{text-shadow:1px 1px 0 #fff}
+		.mask .mod_pop dt{font-size:14px;font-weight:bold;line-height:1.4}
+		.mask .mod_pop dd a{display:inline-block;width:100%;padding:15px 0 20px 0;color:#cb7c19}
+		.mask .mod_pop .txt_book{padding:25px 0 0 7px}
+		.mask .mod_pop .mod_input{overflow:hidden;position:relative;width:228px;height:40px;margin:0 0 0 10px}
+		.mask .mod_pop .mod_input:before{overflow:hidden;content:'';position:absolute;top:10px;left:6px;width:3px;height:20px;background-color:#fd9d11}
+		.mask .mod_pop .input_txt{float:left;display:block;width:144px;height:38px;padding-left:11px;font-size:15px;color:#bababa;border-radius:0;border:1px #888 solid;border-right:0;-webkit-appearance:none;-webkit-border-top-left-radius:3px;-webkit-border-bottom-left-radius:3px;-moz-border-radius-topleft:3px;-moz-border-radius-bottomleft:3px;border-top-left-radius:3px;border-bottom-left-radius:3px}
+		.mask .mod_pop .input_txt:focus{color:#444;outline:0;-webkit-user-modify:read-write-plaintext-only}
+		.mask .pop_book .btn_strong{float:left;width:75px;margin-left:-3px;-webkit-appearance:none;border-radius:0;-webkit-border-top-right-radius:3px;-webkit-border-bottom-right-radius:3px;-moz-border-radius-topright:3px;-moz-border-radius-bottomright:3px;border-top-right-radius:3px;border-bottom-right-radius:3px}
+		.mask .btn_close{position:absolute;top:-3px;left:auto;right:-5px;display:block;width:29px;height:29px;border-radius:29px}
+		.mask .pop_book dl{text-align:center}
+		.mask .pop_book:before,.mask .pop_book:after,.mask .pop_close:before,.mask .pop_close:after{content:'';z-index:5;position:absolute;top:10px;right:2px;width:17px;height:0;border-top:3px #fff solid;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
+		.mask .pop_book:after,.mask .pop_close:after{top:3px;right:9px;width:0;height:17px;border-top:0;border-left:3px #fff solid}
+		.mask .pop_vcode{text-align:center}
+		.mask .pop_vcode dd{height:53px}
+		.mask .pop_vcode dd img{margin-right:10px;vertical-align:middle}
+		.mask .pop_vcode dd a{display:inline-block;height:53px;line-height:52px;color:#cb7c19}
+		.mask .pop_vcode .mod_input{margin-top:13px}
+		.mask .txt{padding:32px 0 23px 0;text-align:center;line-height:1.4}
+		.mask .btn{height:40px;padding-left:10px}
+		.mask .btn a:first-child{margin-right:10px}
+		.mask .tip_error{position:relative;z-index:5;display:table;vertical-align:middle;width:288px;height:178px;margin:-178px auto 0 auto;border-radius:5px;background-color:#fdf4d6;text-align:center;line-height:1.2}
+		.mask .tip_error .txt{display:table-cell;vertical-align:middle;width:100%;height:100%}
+		.mask .txt1{font-size:16px;padding:15px 0 8px}
+		.m_code{padding:0 13px 7px;_display:inline-block;height:63px}
+		.m_code input{-webkit-appearance:none;width:105px;height:20px;border:1px solid #888;display:inline-block;box-shadow:none;color:#fd9d11;border-radius:4px;padding:9px 0 9px 5px;line-height:20px;font-size:15px;vertical-align:top}
+		.m_code .imgbox{width:100px;height:40px;display:inline-block}
+		.m_code .imgbox img{width:100px;height:38px;border:1px solid #c9c9c9}
+		.m_code .imgbox a{display:block;margin-top:7px}
+		.mask .btn_strong.disabled{position:relative;background:-webkit-gradient(linear,left top,left bottom,from(#f16c00),to(#fc8803));background:-webkit-linear-gradient(top,#f16c00,#fc8803);background:-moz-linear-gradient(top,#f16c00,#fc8803);background:-ms-linear-gradient(top,#f16c00,#fc8803);background:-o-linear-gradient(top,#f16c00,#fc8803)}
+		.mask .btn_strong.disabled:after{content:"";position:absolute;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,.25);border-radius:5px}
+		.viewall{font-size:15px;color:#444;text-decoration:underline;margin-left:25px;margin-top:6px;display:inline-block}
+		.mask .J_vocde_change {color:#444;}
+		.mask .no-input {display:block;clear:both;margin-top:5px;color:#dd4e42;}
+		/*--- 活动规则 ---*/
+		.evt_desc {
+		    background-color: #ea434c;
+		    color: #ffcdce;
+		    padding: 0px 16px 15px 16px;
+		}
+		.evt_desc ul {
+		    padding: 15px 20px 20px;
+		}
+		.evt_desc ul li {
+		    font-family: "微软雅黑";
+		    font-size: 15px;
+		    line-height: 22px;
+		    list-style: inside none decimal;
+		}
+		.floor-1 .jiantou{ width:40px; height:22px; display:block; text-indent:-99em; position:absolute; top:250px; left:50%; margin-left:-20px; background:url(a_8.png) no-repeat center; z-index:999; background-size:100%;
+		animation:myfirst 2s linear 0s infinite normal;
+/* Firefox: */
+-moz-animation:myfirst 2s linear 0s infinite normal;
+/* Safari and Chrome: */
+-webkit-animation:myfirst 2s linear 0s infinite normal;
+/* Opera: */
+-o-animation:myfirst 2s linear 0s infinite normal;
+		
+		}
+		
+		@keyframes myfirst
+{
+0%   { top:255px;}
+25%   { top:245px;}
+50%  { top:255px;}
+75%  { top:265px;}
+100% { top:255px;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0%   { top:255px;}
+25%   { top:245px;}
+50%  { top:255px;}
+75%  { top:265px;}
+100% { top:255px;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   { top:255px;}
+25%   { top:245px;}
+50%  { top:255px;}
+75%  { top:265px;}
+100% { top:255px;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+0%   { top:255px;}
+25%   { top:245px;}
+50%  { top:255px;}
+75%  { top:265px;}
+100% { top:255px;}
+}
+		
+		
+		
+    </style>
+   
+</head>
+<body class="J_ping">
+<div class="J_wrapper">
+	<section class="floor-1">
+    
+    <a class="jiantou" target="_self" href="#J_zhuanpan">箭头</a>
+			<img src="a_1.jpg" >
+      <img src="a_2.jpg">
+      <img src="a_3.jpg" >
+            
+  </section>
+    <section class="floor-4">
+        
+      <div class="lottery J_zhuanpan" id="J_zhuanpan">
+            <ul>
+                <li class="item1"></li>
+                <li class="item2"></li>
+                <li class="item3"></li>
+                <li class="item4"></li>
+                <li class="item5"></li>
+                <li class="item6"></li>
+                <li class="item7"></li>
+                <li class="item8"></li>
+                <div class="clear"></div>
+            </ul>
+            <a href="javascript:;" class="act J_getaward" data-sn="22775" data-limit="1" data-vcode="true" data-jiangshare="1" ></a>
+        </div>
+    </section>
+    
+		<section class="floor-1">
+		
+            <img src="a_4.jpg" >
+            <img src="a_5.jpg" usemap="#Map">
+            <map name="Map">
+              <area shape="rect" coords="99,60,222,94" href="http://event.yixun.com/mobile/240355ea2.html?id=24035" target="_blank">
+            </map>
+        </section>
+		
+  <i class="maskbg"></i>
+</div>
+
+<div class="mask">
+    <div class="inner">
+        <div class="mod_pop J_float_choujiang_success_0" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">很遗憾，您没有中奖！</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">关闭</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_1" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">很遗憾，您没有中奖！<br/>每日首次分享可增加一次抽奖机会</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_1_1" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">很遗憾，您没有中奖！<br/>每日首次分享可增加一次抽奖机会</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_2" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">哇，恭喜您抽中了<span class="highlight">移动电源</span><br/>请到我的易迅中查看！</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_3" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">哇，恭喜您抽中了<span class="highlight">奔腾吹风机一台</span><br/>请到我的易迅中查看！</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_4" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">哇，恭喜您抽中了<span class="highlight">篮球U盘</span></p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_5" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">恭喜您抽中一份<span class="highlight">圣诞神秘奖品</span></p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="http://url.cn/PWPxIQ" class="btn_strong long J_ytag">去查看</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_6" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">哇，恭喜您抽中了<span class="highlight">护眼台灯一台</span></p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_7" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">哇，恭喜您抽中了<span class="highlight">海贼王钥匙扣</span></p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_success_8" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">恭喜您抽中一份<span class="highlight">圣诞神秘奖品</span></p>
+                <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="http://url.cn/PWPxIQ" class="btn_strong long J_ytag">去查看</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_share" style="display:none;">
+            <div class="pop_inner">
+            <p class="txt">分享成功！抽奖机会<span class="highlight">+1</span></p>
+                <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">去抽奖</a></p>
+            </div>
+        </div> 
+        <div class="mod_pop J_float_choujiang_fail_51" style="display:none;">
+            <div class="pop_inner">
+            <p class="txt">您今天的机会用完了，明天再来吧</p>
+            <p class="btn"><a href="javascript:;" class="btn_normal J_close short J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+  		<div class="mod_pop J_float_choujiang_fail_50" style="display:none;">
+            <div class="pop_inner">
+            <p class="txt">您今天的机会用完了，明天再来吧</p>
+            <p class="btn"><a href="javascript:;" class="btn_normal J_close short J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_fail_default J_float_choujiang_fail_40" style="display:none;">
+            <div class="pop_inner">
+            <p class="txt">抽奖失败,请稍候重试！</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+            </div>
+        </div>  
+        <div class="mod_pop  J_float_choujiang_fail_1152" style="display:none;">
+            <div class="pop_inner">
+            <p class="txt">今日未登录易迅手机APP！</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+            </div>
+        </div>  
+        <div class="mod_pop J_float_choujiang_fail_1010" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">验证码输入不正确！<br>请重新抽奖</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_fail_notbegin J_float_choujiang_fail_44" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt">抽奖活动将于2014-12-11正式开始<br>感谢您的关注</p>
+                <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+            </div>
+        </div>
+        <div class="mod_pop J_float_choujiang_fail_end J_float_choujiang_fail_45" style="display:none;">
+            <div class="pop_inner">
+            <p class="txt">活动已经结束，感谢关注！<p>
+            <p class="btn"><a href="javascript:;" class="btn_normal J_close short J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+            </div>
+        </div>
+        <div class="mod_pop pop_close J_vcode" style="display:none;">
+            <div class="pop_inner">
+                <p class="txt txt1">请输入验证码</p>
+                <div class="m_code">
+                    <input type="text" name="code" class="J_vcode_input" placeholder="请输入验证码">
+                    <div class="imgbox">
+                        <img class="J_vcode_url J_vocde_change">
+                        <a href="javascript:;" class="J_vocde_change">看不清？换一张</a>
+                    </div>
+                    <a href="#" class="no-input J_vcode_noinput" style="display:none;">您未输入验证码</a>
+                </div>
+                <p class="btn"><a href="javascript:;" class="btn_strong all J_vcode_submit J_ytag">提交并抽奖</a></p>
+                <a href="javascript:;" class="btn_close J_vcode_close"></a>
+            </div>
+        </div>
+    </div>
+    <div style="display:none;">
+	  [@[track_img]@]
+	</div>
+</div>
+</body>
+</html>
