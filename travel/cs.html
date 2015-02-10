@@ -330,7 +330,7 @@ left: 30%;z-index:999; text-indent:-99em;}
    
         <section class="section   show  section1 ">
             <div class="container">
-              <div class="tit"><div class="inner"> <img src="img/p_26.jpg" alt="" style=" height:0"><img src="img/p_2.png" alt=""></div></div>
+              <div class="tit"><div class="inner"> <img src="img/p_2.png" alt=""></div></div>
                
               <div class="renwu1"><img src="img/p_3.png" alt=""></div>
               <div class="renwu2"><img src="img/p_4.png" alt=""></div>
@@ -513,86 +513,10 @@ var imgListReady = function(imgArr,callback){
 
 }
 
-var  getEnv = function(){
-    var ua = navigator.userAgent.toLowerCase();
-    if(/micromessenger(\/[\d\.]+)*/.test(ua)){
-        return "weixin"
-    }else if(/qq\/(\/[\d\.]+)*/.test(ua) || /qzone\//.test(ua)){
-        return "qq";
-    }else{
-        return "web";
-    }
-};
 
 
 
-var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
-    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 
-        WeixinJSBridge.on('menu:share:timeline', function(argv){
-            WeixinJSBridge.invoke('shareTimeline',{
-                "img_url":img_url,
-                "img_width":img_width,
-                "img_height":img_height,
-                "link":link,
-                "title": title,
-                "desc":desc
-            }, function() {
-                callback('timeline');
-            });
-        });
-
-        WeixinJSBridge.on('menu:share:appmessage', function(argv){
-
-            WeixinJSBridge.invoke('sendAppMessage',{
-                "appid":appid || "",
-                "img_url":img_url,
-                "img_width":img_width,
-                "img_height":img_height,
-                "link":link,
-                "title": title,
-                "desc":desc
-            }, function() {
-                callback('appmessage');
-            })
-
-        });
-
-
-        WeixinJSBridge.on('menu:share:weibo', function(argv){
-          WeixinJSBridge.invoke('shareWeibo',{
-             "content":title,
-             "url":link
-          }, function(res){
-            callback('weibo');
-          });
-        });
-
-        WeixinJSBridge.on('menu:share:facebook', function(argv){
-          (dataForWeixin.callback)();
-          WeixinJSBridge.invoke('shareFB',{
-                "img_url":img_url,
-                "img_width":img_width,
-                "img_height":img_height,
-                "link":link,
-                "title": title,
-                "desc":desc
-          }, function(res){
-            callback('facebook');
-          });
-        });
-
-
-
-    })
-
-
-};
-
-
-imgListReady(['http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/fengmian_bg.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page1_item.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit1.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit2.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit3.png'],function(){
-    $('.section1').addClass('loaded');        
-})
 
 var $pages  = $('#J_pages');
 $pages.snapscroll({
@@ -621,74 +545,7 @@ $pages.on('done:SnapScroll',function(e,curIndex,newIndex,direction){
 /**
  * 公众号链接判断
  */
-var env = getEnv();
-if(env == 'weixin'){
-    $('#ppMpLink').attr('href','http://mp.weixin.qq.com/s?__biz=MjM5MTI5NjI2MA==&mid=200860965&idx=1&sn=0608e210f97905d61f6b446daf098ff7#rd');
-}else{
-    $('#ppMpLink').attr('href','http://www.paipai.com/m2/my/fuwuhao.shtml?_wv=1');
-}
 
-
-
-
-$('#shareLink').on('touchend',function(event){
-  event.preventDefault();
-  var ua = navigator.userAgent;
-  if(ua.indexOf('iPhone') > -1 && ua.indexOf('NewsApp') > -1){
-      paipai_h5_share.init({
-        hideQQ: false,
-        hideQzone: false,
-        hideWX: false,
-        hideWXFriend: false,
-        hideTqq: false,
-        qq: {
-          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
-          desc: '高段位的生活，完美生活风向标！',
-          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
-          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
-          ptag: ""
-        },
-        qzone: {
-          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
-          desc: '高段位的生活，完美生活风向标！',
-          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
-          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
-          ptag: "12475.18.2"
-        },
-        weixin: {
-          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
-          desc: '高段位的生活，完美生活风向标！',
-          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
-          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
-          ptag: "12475.18.3"
-        },
-        weixinFriend: {
-          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
-          desc: '高段位的生活，完美生活风向标！',
-          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
-          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
-          ptag: ""
-        },
-        tqq: {
-          title: '描摹生活的轮廓，沐浴生活的趣致，消磨这愉快的时光。',
-          desc: '高段位的生活，完美生活风向标！',
-          share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
-          image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
-          ptag: ""
-        }
-      });    
-  }else{
-    $('#shareLayer').show();
-  }
-
-
-  
-})
-
-$('#shareLayer').on('touchend',function(event){
-  event.preventDefault();
-  $(this).hide();
-})
 
 /**
  * 音乐播放
@@ -735,14 +592,19 @@ $('.page_item1,.page_item2,.bd,.page2_item,.page2_btn').on('click',function(even
 
 
 
- wxShare('http://pics3.paipaiimg.com/update/20150210/index_p_26.jpg',100,100,'http://www.paipai.com/m2/2014/1011/index.html?from=singlemessage&isappinstalled=0','2015年旅行社行业论坛高峰论坛隆重开启|拍拍微店|京东旗下拍拍网','从Travel Agent 到Travel  Service，传统旅游如何玩传社交化电商与移动互联？');
-
 
 
 
     </script>
     <script src="http://static.paipaiimg.com/fd/paipai/act/base/js/jquery.pp.2014.marketbase_v2.h5.js?t=20140530181345" type="text/javascript" charset="gbk"  ></script>
+<script type="text/javascript">
+window.actShare =  {
+      title : '2015年旅行社行业论坛高峰论坛隆重开启|拍拍：拍出惊喜', 
+      desc : '内容传统旅游如何玩传社交化电商与移动互联？如何做到Travel  Service',
+      image_url : 'http://pics3.paipaiimg.com/update/20150210/index_p_26.jpg' 
+}
 
+</script>
 </body>
 </html>
 <!--[if !IE]>|xGv00|a6c111871b9ce18432e34fd585c2d93c<![endif]-->
