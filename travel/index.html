@@ -523,7 +523,68 @@ var  getEnv = function(){
 
 
 
+var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+            }, function() {
+                callback('timeline');
+            });
+        });
+
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid":appid || "",
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+            }, function() {
+                callback('appmessage');
+            })
+
+        });
+
+
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+          WeixinJSBridge.invoke('shareWeibo',{
+             "content":title,
+             "url":link
+          }, function(res){
+            callback('weibo');
+          });
+        });
+
+        WeixinJSBridge.on('menu:share:facebook', function(argv){
+          (dataForWeixin.callback)();
+          WeixinJSBridge.invoke('shareFB',{
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+          }, function(res){
+            callback('facebook');
+          });
+        });
+
+
+
+    })
+
+
+};
 
 
 imgListReady(['http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/fengmian_bg.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/page1_item.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit1.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit2.png','http://static.paipaiimg.com/fd/paipai/act/20141222_pinzhitaidu/img/tit3.png'],function(){
@@ -673,17 +734,16 @@ $('.page_item1,.page_item2,.bd,.page2_item,.page2_btn').on('click',function(even
 
 
 
-
-
-
-    </script><script src="http://static.paipaiimg.com/fd/paipai/act/base/js/jquery.pp.2014.marketbase_v2.h5.js?t=20140530181345" type="text/javascript" charset="utf-8"  ></script>
-<script type="text/javascript">
 window.actShare =  {
       title : '2015年旅行社行业论坛高峰论坛隆重开启|拍拍：拍出惊喜', 
       desc : '内容传统旅游如何玩传社交化电商与移动互联？如何做到Travel  Service',
       image_url : 'http://pics3.paipaiimg.com/update/20150210/index_p_26.jpg' 
 }
 
-</script>
+
+    </script>
+	
+	<script src="http://static.paipaiimg.com/fd/paipai/act/base/js/jquery.pp.2014.marketbase_v2.h5.js?t=20140530181345" type="text/javascript" charset="utf-8"  ></script>
+
 </body>
 </html>
