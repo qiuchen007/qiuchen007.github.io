@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>2015å¹´æ—…è¡Œç¤¾è¡Œä¸šè®ºå›é«˜å³°è®ºå›éš†é‡å¼€å¯</title>
-    <meta charset="utf-8">
+    <title>2015ÄêÂÃĞĞÉçĞĞÒµÂÛÌ³¸ß·åÂÛÌ³Â¡ÖØ¿ªÆô</title>
+    <meta charset="gbk">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"  />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -324,7 +324,6 @@ left: 30%;z-index:999; text-indent:-99em;}
 </head>
 <body>
 
-<img src="img/p_26.jpg" alt="" style="display:none;">
     <article id="J_pages" class="pages">
         <section class="section   show  section1 ">
             <div class="container">
@@ -380,9 +379,9 @@ left: 30%;z-index:999; text-indent:-99em;}
         <section class="section   section6">
             <div class="container">
               
-               <a href="http://b.paipai.com/itemweb/item?scence=101&amp;ic=5323BCA9000000000401000046790911" class="sign" target="_blank">ç«‹å³æŠ¥å</a>
-               <a href="http://b.paipai.com/itemweb/item?scence=101&ic=5323BCA9000000000401000045C573A0" class="detail" target="_blank">äº†è§£è¯¦æƒ…</a>
-                <a href="http://url.cn/Tq2ODo" class="weidian" target="_blank">å¾®åº—æŠ€æœ¯æ”¯æŒ</a>
+               <a href="http://b.paipai.com/itemweb/item?scence=101&amp;ic=5323BCA9000000000401000046790911" class="sign" target="_blank">Á¢¼´±¨Ãû</a>
+               <a href="http://b.paipai.com/itemweb/item?scence=101&ic=5323BCA9000000000401000045C573A0" class="detail" target="_blank">ÁË½âÏêÇé</a>
+                <a href="http://url.cn/Tq2ODo" class="weidian" target="_blank">Î¢µê¼¼ÊõÖ§³Ö</a>
                 <span class="arrow"></span>
                 <a href="#" class="audio_ico audio_ico_stop"></a>
                 <div class="page_tit tt6"><img src="img/p_20.png" ></div>
@@ -416,7 +415,7 @@ left: 30%;z-index:999; text-indent:-99em;}
 var imgReady = (function () {
     var list = [], intervalId = null,
 
-    // ç”¨æ¥æ‰§è¡Œé˜Ÿåˆ—
+    // ÓÃÀ´Ö´ĞĞ¶ÓÁĞ
     tick = function () {
         var i = 0;
         for (; i < list.length; i++) {
@@ -425,7 +424,7 @@ var imgReady = (function () {
         !list.length && stop();
     },
 
-    // åœæ­¢æ‰€æœ‰å®šæ—¶å™¨é˜Ÿåˆ—
+    // Í£Ö¹ËùÓĞ¶¨Ê±Æ÷¶ÓÁĞ
     stop = function () {
         clearInterval(intervalId);
         intervalId = null;
@@ -437,7 +436,7 @@ var imgReady = (function () {
         
         img.src = url;
 
-        // å¦‚æœå›¾ç‰‡è¢«ç¼“å­˜ï¼Œåˆ™ç›´æ¥è¿”å›ç¼“å­˜æ•°æ®
+        // Èç¹ûÍ¼Æ¬±»»º´æ£¬ÔòÖ±½Ó·µ»Ø»º´æÊı¾İ
         if (img.complete) {
             ready.call(img);
             load && load.call(img);
@@ -447,19 +446,19 @@ var imgReady = (function () {
         width = img.width;
         height = img.height;
         
-        // åŠ è½½é”™è¯¯åçš„äº‹ä»¶
+        // ¼ÓÔØ´íÎóºóµÄÊÂ¼ş
         img.onerror = function () {
             error && error.call(img);
             onready.end = true;
             img = img.onload = img.onerror = null;
         };
         
-        // å›¾ç‰‡å°ºå¯¸å°±ç»ª
+        // Í¼Æ¬³ß´ç¾ÍĞ÷
         onready = function () {
             newWidth = img.width;
             newHeight = img.height;
             if (newWidth !== width || newHeight !== height ||
-                // å¦‚æœå›¾ç‰‡å·²ç»åœ¨å…¶ä»–åœ°æ–¹åŠ è½½å¯ä½¿ç”¨é¢ç§¯æ£€æµ‹
+                // Èç¹ûÍ¼Æ¬ÒÑ¾­ÔÚÆäËûµØ·½¼ÓÔØ¿ÉÊ¹ÓÃÃæ»ı¼ì²â
                 newWidth * newHeight > 1024
             ) {
                 ready.call(img);
@@ -468,22 +467,22 @@ var imgReady = (function () {
         };
         onready();
         
-        // å®Œå…¨åŠ è½½å®Œæ¯•çš„äº‹ä»¶
+        // ÍêÈ«¼ÓÔØÍê±ÏµÄÊÂ¼ş
         img.onload = function () {
-            // onloadåœ¨å®šæ—¶å™¨æ—¶é—´å·®èŒƒå›´å†…å¯èƒ½æ¯”onreadyå¿«
-            // è¿™é‡Œè¿›è¡Œæ£€æŸ¥å¹¶ä¿è¯onreadyä¼˜å…ˆæ‰§è¡Œ
+            // onloadÔÚ¶¨Ê±Æ÷Ê±¼ä²î·¶Î§ÄÚ¿ÉÄÜ±Èonready¿ì
+            // ÕâÀï½øĞĞ¼ì²é²¢±£Ö¤onreadyÓÅÏÈÖ´ĞĞ
             !onready.end && onready();
         
             load && load.call(img);
             
-            // IE gifåŠ¨ç”»ä¼šå¾ªç¯æ‰§è¡Œonloadï¼Œç½®ç©ºonloadå³å¯
+            // IE gif¶¯»­»áÑ­»·Ö´ĞĞonload£¬ÖÃ¿Õonload¼´¿É
             img = img.onload = img.onerror = null;
         };
 
-        // åŠ å…¥é˜Ÿåˆ—ä¸­å®šæœŸæ‰§è¡Œ
+        // ¼ÓÈë¶ÓÁĞÖĞ¶¨ÆÚÖ´ĞĞ
         if (!onready.end) {
             list.push(onready);
-            // æ— è®ºä½•æ—¶åªå…è®¸å‡ºç°ä¸€ä¸ªå®šæ—¶å™¨ï¼Œå‡å°‘æµè§ˆå™¨æ€§èƒ½æŸè€—
+            // ÎŞÂÛºÎÊ±Ö»ÔÊĞí³öÏÖÒ»¸ö¶¨Ê±Æ÷£¬¼õÉÙä¯ÀÀÆ÷ĞÔÄÜËğºÄ
             if (intervalId === null) intervalId = setInterval(tick, 40);
         };
     };
@@ -617,7 +616,7 @@ $pages.on('done:SnapScroll',function(e,curIndex,newIndex,direction){
 
             
 /**
- * å…¬ä¼—å·é“¾æ¥åˆ¤æ–­
+ * ¹«ÖÚºÅÁ´½ÓÅĞ¶Ï
  */
 var env = getEnv();
 if(env == 'weixin'){
@@ -640,36 +639,36 @@ $('#shareLink').on('touchend',function(event){
         hideWXFriend: false,
         hideTqq: false,
         qq: {
-          title: 'ææ‘¹ç”Ÿæ´»çš„è½®å»“ï¼Œæ²æµ´ç”Ÿæ´»çš„è¶£è‡´ï¼Œæ¶ˆç£¨è¿™æ„‰å¿«çš„æ—¶å…‰ã€‚',
-          desc: 'é«˜æ®µä½çš„ç”Ÿæ´»ï¼Œå®Œç¾ç”Ÿæ´»é£å‘æ ‡ï¼',
+          title: 'ÃèÄ¡Éú»îµÄÂÖÀª£¬ãåÔ¡Éú»îµÄÈ¤ÖÂ£¬ÏûÄ¥ÕâÓä¿ìµÄÊ±¹â¡£',
+          desc: '¸ß¶ÎÎ»µÄÉú»î£¬ÍêÃÀÉú»î·çÏò±ê£¡',
           share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
           image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
           ptag: ""
         },
         qzone: {
-          title: 'ææ‘¹ç”Ÿæ´»çš„è½®å»“ï¼Œæ²æµ´ç”Ÿæ´»çš„è¶£è‡´ï¼Œæ¶ˆç£¨è¿™æ„‰å¿«çš„æ—¶å…‰ã€‚',
-          desc: 'é«˜æ®µä½çš„ç”Ÿæ´»ï¼Œå®Œç¾ç”Ÿæ´»é£å‘æ ‡ï¼',
+          title: 'ÃèÄ¡Éú»îµÄÂÖÀª£¬ãåÔ¡Éú»îµÄÈ¤ÖÂ£¬ÏûÄ¥ÕâÓä¿ìµÄÊ±¹â¡£',
+          desc: '¸ß¶ÎÎ»µÄÉú»î£¬ÍêÃÀÉú»î·çÏò±ê£¡',
           share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
           image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
           ptag: "12475.18.2"
         },
         weixin: {
-          title: 'ææ‘¹ç”Ÿæ´»çš„è½®å»“ï¼Œæ²æµ´ç”Ÿæ´»çš„è¶£è‡´ï¼Œæ¶ˆç£¨è¿™æ„‰å¿«çš„æ—¶å…‰ã€‚',
-          desc: 'é«˜æ®µä½çš„ç”Ÿæ´»ï¼Œå®Œç¾ç”Ÿæ´»é£å‘æ ‡ï¼',
+          title: 'ÃèÄ¡Éú»îµÄÂÖÀª£¬ãåÔ¡Éú»îµÄÈ¤ÖÂ£¬ÏûÄ¥ÕâÓä¿ìµÄÊ±¹â¡£',
+          desc: '¸ß¶ÎÎ»µÄÉú»î£¬ÍêÃÀÉú»î·çÏò±ê£¡',
           share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
           image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
           ptag: "12475.18.3"
         },
         weixinFriend: {
-          title: 'ææ‘¹ç”Ÿæ´»çš„è½®å»“ï¼Œæ²æµ´ç”Ÿæ´»çš„è¶£è‡´ï¼Œæ¶ˆç£¨è¿™æ„‰å¿«çš„æ—¶å…‰ã€‚',
-          desc: 'é«˜æ®µä½çš„ç”Ÿæ´»ï¼Œå®Œç¾ç”Ÿæ´»é£å‘æ ‡ï¼',
+          title: 'ÃèÄ¡Éú»îµÄÂÖÀª£¬ãåÔ¡Éú»îµÄÈ¤ÖÂ£¬ÏûÄ¥ÕâÓä¿ìµÄÊ±¹â¡£',
+          desc: '¸ß¶ÎÎ»µÄÉú»î£¬ÍêÃÀÉú»î·çÏò±ê£¡',
           share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
           image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
           ptag: ""
         },
         tqq: {
-          title: 'ææ‘¹ç”Ÿæ´»çš„è½®å»“ï¼Œæ²æµ´ç”Ÿæ´»çš„è¶£è‡´ï¼Œæ¶ˆç£¨è¿™æ„‰å¿«çš„æ—¶å…‰ã€‚',
-          desc: 'é«˜æ®µä½çš„ç”Ÿæ´»ï¼Œå®Œç¾ç”Ÿæ´»é£å‘æ ‡ï¼',
+          title: 'ÃèÄ¡Éú»îµÄÂÖÀª£¬ãåÔ¡Éú»îµÄÈ¤ÖÂ£¬ÏûÄ¥ÕâÓä¿ìµÄÊ±¹â¡£',
+          desc: '¸ß¶ÎÎ»µÄÉú»î£¬ÍêÃÀÉú»î·çÏò±ê£¡',
           share_url: 'http://www.paipai.com/promote/2014/pro_167.shtml',
           image_url: 'http://pics1.paipaiimg.com/update/20141223/index_200402987.jpg',
           ptag: ""
@@ -689,7 +688,7 @@ $('#shareLayer').on('touchend',function(event){
 })
 
 /**
- * éŸ³ä¹æ’­æ”¾
+ * ÒôÀÖ²¥·Å
  */
 var audio = document.createElement("audio");
 audio.src = "http://www.paipai.com/m2/2014/1011/FirstClass.mp3";
@@ -700,7 +699,7 @@ audio.addEventListener("canplaythrough",function() {
     $('.audio_ico').removeClass('audio_ico_stop'); 
 },false);
 
-// æ‰‹Qå¾®ä¿¡éœ€è¦æ‰‹åŠ¨è§¦å‘æ’­æ”¾
+// ÊÖQÎ¢ĞÅĞèÒªÊÖ¶¯´¥·¢²¥·Å
 
 var flag = 0;
 $('body').on('touchstart', function(event) {
@@ -733,12 +732,16 @@ $('.page_item1,.page_item2,.bd,.page2_item,.page2_btn').on('click',function(even
 
 
 
- wxShare('img/p_26.jpg',100,100,'http://www.paipai.com/promote/2014/pro_167.shtml','2015å¹´æ—…è¡Œç¤¾è¡Œä¸šè®ºå›é«˜å³°è®ºå›éš†é‡å¼€å¯|æ‹æ‹å¾®åº—|äº¬ä¸œæ——ä¸‹æ‹æ‹ç½‘','å†…å®¹ä¼ ç»Ÿæ—…æ¸¸å¦‚ä½•ç©ä¼ ç¤¾äº¤åŒ–ç”µå•†ä¸ç§»åŠ¨äº’è”ï¼Ÿå¦‚ä½•åšåˆ°Travel  Service');
+ </script>
+ <script src="http://static.paipaiimg.com/fd/paipai/act/base/js/jquery.pp.2014.marketbase_v2.h5.js?t=20140530181345" type="text/javascript" charset="gbk"  ></script>
 
+<script type="text/javascript">
+window.actShare =  {
+      title : 'Äê½Ú°éÊÖÀñ ´ı¿ÍÒàÓĞµÀ|ÅÄÅÄ£ºÅÄ³ö¾ªÏ²', 
+      desc : '´º½Ú²»´òìÈ£¬ºÃ»õ·ÅËÁÂò£¡×îÊµ»İµÄĞÂ´ºÄê»õ£¬¾¡ÔÚÅÄÅÄ¡£',
+      image_url : 'http://pics2.paipaiimg.com/update/20150209/index_143335423.jpg' 
+}
 
-
-
-    </script><script src="http://static.paipaiimg.com/fd/paipai/act/base/js/jquery.pp.2014.marketbase_v2.h5.js?t=20140530181345" type="text/javascript" charset="gbk"  ></script>
-
+</script>
 </body>
 </html>
