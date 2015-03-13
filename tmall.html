@@ -64,7 +64,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
         /*=== base style===*/
     html{ font-size:1rem; position: relative;}
     body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd, li, img { padding:0; margin:0; border:none; font-size:inherit;}
-    body{font-family: 'helvetica neue',tahoma,'hiragino sans gb',stheiti,'wenquanyi micro hei',5FAE8F6F96C59ED1,5B8B4F53,sans-serif; font-size:0.12rem;}
+    body{font-family: 'helvetica neue',tahoma,'hiragino sans gb',stheiti,'wenquanyi micro hei',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif; font-size:0.12rem;}
     ul,li {list-style: none;}
     h1,h2,h3,h4, h5, h6{font-weight:normal;}
     del{text-decoration: none;}
@@ -84,18 +84,16 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
     .show{ display:block;}
     .banner li,.more p,.block h2{ margin-bottom:1.5%;}
     .mui-sidebar .nav{background-color:#fff; padding-left:.3em;}
-	.mui-sidebar .links{ display: -webkit-box; -webkit-box-orient: horizontal;padding-left:0.5em;}
-    .mui-sidebar .links a{color:#999; padding:.78em 0.3em 0.78em 0em;flex-shrink: 0;-webkit-flex-shrink:0;}
-	.mui-sidebar .links a i{width: 0.28rem;height: 0.36rem;display: block;float: left;margin-top: 0.01rem;
-margin-right: 0.06rem;}
+	.mui-sidebar .links{ display: -webkit-box;padding-left:0.5em;}
+    .mui-sidebar .links a{color:#999; padding:.78em 0.3em 0.78em 0em;}
+    .mui-sidebar .links a i{width: 0.28rem;height: 0.36rem;display: block;float: left;margin-top: 0.01rem;margin-right: 0.06rem;}
+    .mui-sidebar .links a span{display: block;float: left;}
+
     .mui-sidebar .links a.current{ color:#ee000e;}
-    .mui-sidebar .links a.current i{ background:url("http://gtms04.alicdn.com/tps/i4/TB1KTovHXXXXXbiaXXXU3XiFpXX-20-26.png") no-repeat center top; background-size:90%;}
-	    .mui-sidebar .links a span{ float:left; display:block;}
+    .mui-sidebar .links a.current i{ background:url("http://gtms04.alicdn.com/tps/i4/TB1KTovHXXXXXbiaXXXU3XiFpXX-20-26.png") no-repeat center; background-size:90%;}
     .mui-sidebar .more{ width:10%; border-left:1px solid #f2f2f2;}
     .mui-sidebar .more i{ width:0.34rem; height:0.18rem; display:inline-block; background:url("http://gtms04.alicdn.com/tps/i4/TB1syQrHXXXXXcqaXXXg7UoGXXX-34-18.jpg"); background-size:100%;}
     .mui-sidebar .links a.current::after{ border:none;}
-
-	
     .mui-sidebar .more::before, .mui-sidebar .more::after, .mui-sidebar .more i{background-color:#fff;}
 
 
@@ -135,7 +133,7 @@ width: 100.6%;}
     .hg_product .xg span{ border:1px solid #dd2727; border-radius:15px; padding:2px 5px;display: inline-block;}
     .hg_product .xg span em{ display:inline-block; width:0.23rem; line-height:0.24rem;}
     .hg_product .title{font-size: 0.28rem;
-height: 0.56rem;
+height: 0.58rem;
 line-height: 0.3rem;
 overflow: hidden;
 color: #333;
@@ -147,7 +145,6 @@ margin: 4% 0;}
 
         /*单品区*/
     .pro_list{}
-
     .pro_list li{ background:#fff; width:50%; float:left; border-bottom:1px solid #f6f0e2; position:relative; }
 	.pro_list li .pic{ display:block; height:3.5rem; line-height:3.5rem; overflow:hidden;}
     .pro_list li .tag{ width:1rem; height:0.81rem; position:absolute; top:3%; right:0;}
@@ -166,10 +163,7 @@ margin: 4% 0;}
     .pro_list li .del{ font-size:0.22rem; color:#ccc;}
     .pro_list li .ins{ font-size:0.34rem; line-height:0.34rem;}
 
-    .pro_list li .gwc{ width: 0.57rem;
-height: 0.57rem;
-bottom: 4.2%;
-right: 5.8%; }
+    .pro_list li .gwc{ width: 0.7rem;height: 0.7rem;bottom: 4.2%;right: 5.8%; }
 
     .banner a{ display:block; margin-bottom:3%;}
 
