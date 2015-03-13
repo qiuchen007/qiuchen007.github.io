@@ -86,7 +86,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
     .mui-sidebar .nav{background-color:#fff; padding-left:.3em;}
 	.mui-sidebar .links{ display: -webkit-box; -webkit-box-orient: horizontal;}
     .mui-sidebar .links a{color:#999; padding:.78em 0.5em;flex-shrink: 0;-webkit-flex-shrink:0;}
-	.mui-sidebar .links a i{width: 0.28rem;height: 0.36rem;display: inline-block;float: left;margin-top: 0.01rem;
+	.mui-sidebar .links a i{width: 0.28rem;height: 0.36rem;display: block;float: left;margin-top: 0.01rem;
 margin-right: 0.09rem;}
     .mui-sidebar .links a.current{ color:#ee000e;}
     .mui-sidebar .links a.current i{ background:url("http://gtms04.alicdn.com/tps/i4/TB1KTovHXXXXXbiaXXXU3XiFpXX-20-26.png") no-repeat center top; background-size:90%;}
@@ -444,9 +444,9 @@ line-height: 0.3rem;}
                 S.all(this).remove()
             }else{
                 if( num==1){
-                    dm = dm+'<a class="current" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><span> '+title+'&nbsp; <span></a>';
+                    dm = dm+'<a class="current" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><i></i><span> '+title+'&nbsp;&nbsp; <span></a>';
                 }else{
-                    dm = dm+'<a class="" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><span> '+title+'&nbsp;</span></a>';
+                    dm = dm+'<a class="" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><i></i> <span> '+title+'&nbsp;&nbsp;</span></a>';
                 }
                 num++;
             }
