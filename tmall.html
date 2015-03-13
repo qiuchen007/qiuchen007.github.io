@@ -85,7 +85,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
     .banner li,.more p,.block h2{ margin-bottom:1.5%;}
     .mui-sidebar .nav{background-color:#fff; padding-left:.3em;}
 	.mui-sidebar .links{ display: -webkit-box; -webkit-box-orient: horizontal;}
-    .mui-sidebar .links a{color:#999; padding:.78em 0.5em;flex-shrink: 3;-webkit-flex-shrink:3;}
+    .mui-sidebar .links a{color:#999; padding:.78em 0.5em;flex-shrink: 0;-webkit-flex-shrink:0;}
 	.mui-sidebar .links a i{width: 0.28rem;height: 0.36rem;display: inline-block;float: left;margin-top: 0.01rem;
 margin-right: 0.09rem;}
     .mui-sidebar .links a.current{ color:#ee000e;}
@@ -444,9 +444,9 @@ line-height: 0.3rem;}
                 S.all(this).remove()
             }else{
                 if( num==1){
-                    dm = dm+'<a class="current" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><i></i><span> '+title+' <span></a>';
+                    dm = dm+'<a class="current" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><i></i><span> '+title+'&nbsp; <span></a>';
                 }else{
-                    dm = dm+'<a class="" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><i></i> <span> '+title+'</span></a>';
+                    dm = dm+'<a class="" data-params={"cateId":'+n+'} href="#'+md+'" target="_self"><i></i> <span> '+title+'&nbsp;</span></a>';
                 }
                 num++;
             }
