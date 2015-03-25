@@ -20,14 +20,14 @@ input, img { vertical-align: middle }
 input, select { font: inherit; font-size: 100% }
 area { outline: none; border: none; }
 a { text-decoration: none; color: #333 }
-body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; font-size: 14px; font-family: "\5fae\8f6f\96c5\9ed1", "Microsoft YaHei", Helvetica, Arial, sans-serif; line-height: 1.5; color: #666; -webkit-text-size-adjust: 100%; background: #E0E0E0; }
+body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; font-size: 14px; font-family: "\5fae\8f6f\96c5\9ed1", "Microsoft YaHei", Helvetica, Arial, sans-serif; line-height: 1.5; color: #666; -webkit-text-size-adjust: 100%; background: #ff2c2c; }
 .pages { position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden }
 .section { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; color: #005580; font-size: 20px; }
 .show { display: block; z-index: 5; background-size: 100%; }
 .active { display: block; z-index: 10; }
 .container { position: relative; max-width: 640px; height: 100%; margin: 0 auto; overflow: hidden; }
 .container img { width: 100%; }
-.arrow { position: absolute; z-index: 4; left: 50%; margin-left: -15px; width: 29px; height: 18px;background-image: url(images/arrow.png); background-repeat: no-repeat; background-position: center; background-size: 100%; bottom: 20px;animation: myfirst 2s linear 0s infinite normal;
+.arrow { position: absolute; z-index: 4; left: 50%; margin-left: -15px; width: 29px; height: 18px;background-image: url(img/arrow.png); background-repeat: no-repeat; background-position: center; background-size: 100%; bottom: 10px;animation: myfirst 2s linear 0s infinite normal;
 Firefox: ;
 -moz-animation: myfirst 2s linear 0s infinite normal;
 -webkit-animation: myfirst 2s linear 0s infinite normal;
@@ -70,7 +70,7 @@ Opera: ;
 75%  { bottom:45px;}
 100% { bottom:35px;}
 }
-.section .logo{ width:254px; height:120px; background:url(images/logo.png) no-repeat center top; position:absolute; left:30px; top:30px;}
+.section .logo{ width:254px; height:120px; background:url(img/logo.png) no-repeat center top; position:absolute; left:30px; top:30px;}
 .section2 .step{ position:absolute; width:100%;left: -7px;}
 
 .section2 .step1{   top:254px; z-index:10px; -webkit-animation-name: bounceIn;animation-name: bounceIn;}
@@ -144,37 +144,43 @@ Opera: ;
 
   <section class="section show section1">
   
-    <div class="container"> <img src="images/p1_1.jpg" width="640" height="303"> <img src="images/p1_2.jpg" width="640" height="236"> <img src="images/p1_3.jpg" width="640" height="255"> <img src="images/p1_4.jpg" width="640" height="214"><div class="logo"></div> <span class="arrow"></span> </div>
+    <div class="container"> <img src="img/p1_1.jpg" width="640" height="303"> <img src="img/p1_2.jpg" width="640" height="236"> <img src="img/p1_3.jpg" width="640" height="255"> <img src="img/p1_4.jpg" width="640" height="214"><div class="logo"></div> <span class="arrow"></span> </div>
   </section>
   <section class="section  section2">
     <div class="container">
-    <div class="step step1"><img src="images/p8_1.png" width="640" height="105"></div>
+    <div class="step step1"><img src="img/p8_1.png" width="640" height="105"></div>
     <div class="step step2">
-    <img src="images/p8_2.png" width="640" height="102">
+    <img src="img/p8_2.png" width="640" height="102">
     
     </div>
     <div class="step step3">
-    <img src="images/p8_3.png" width="640" height="101">
+    <img src="img/p8_3.png" width="640" height="101">
     </div><div class="step step4">
-    <img src="images/p8_4.png" width="640" height="108">
+    <img src="img/p8_4.png" width="640" height="108">
     
     </div>
-     <img src="images/p2_1.jpg" width="640" height="254"> <img src="images/p2_2.jpg" width="640" height="225"> <img src="images/p2_3.jpg" width="640" height="214"> <img src="images/p2_4.jpg" width="640" height="309"> <div class="logo"></div><span class="arrow"></span></div>
+     <img src="img/p2_1.jpg" width="640" height="254"> <img src="img/p2_2.jpg" width="640" height="225"> <img src="img/p2_3.jpg" width="640" height="214"> <img src="img/p2_4.jpg" width="640" height="309"> <div class="logo"></div><span class="arrow"></span></div>
   </section>
   <section class="section     section3">
-    <div class="container"> <img src="images/p3_1.jpg" width="640" height="239"> <img src="images/p3_2.jpg" width="640" height="252"> <img src="images/p3_3.jpg" width="640" height="217"> <img src="images/p3_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span> </div>
+    <div class="container"> <img src="img/p3_1.jpg" width="640" height="239"> <img src="img/p3_2.jpg" width="640" height="252"> <img src="img/p3_3.jpg" width="640" height="217"> <img src="img/p3_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span> </div>
   </section>
   <section class="section  section4">
-    <div class="container"> <img src="images/p4_1.jpg" width="640" height="239"> <img src="images/p4_2.jpg" width="640" height="252"> <img src="images/p4_3.jpg" width="640" height="217"> <img src="images/p4_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span></div>
+    <div class="container"> <img src="img/p4_1.jpg" width="640" height="239"> <img src="img/p4_2.jpg" width="640" height="252"> <img src="img/p4_3.jpg" width="640" height="217"> <img src="img/p4_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span></div>
   </section>
   <section class="section  section5">
-    <div class="container"> <img src="images/p5_1.jpg" width="640" height="239"> <img src="images/p5_2.jpg" width="640" height="252"> <img src="images/p5_3.jpg" width="640" height="217"> <img src="images/p5_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span></div>
+    <div class="container"> <img src="img/p5_1.jpg" width="640" height="239"> <img src="img/p5_2.jpg" width="640" height="252"> <img src="img/p5_3.jpg" width="640" height="217"> <img src="img/p5_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span></div>
   </section>
   <section class="section  section6">
-    <div class="container"> <img src="images/p6_1.jpg" width="640" height="239"> <img src="images/p6_2.jpg" width="640" height="252"> <img src="images/p6_3.jpg" width="640" height="217"><img src="images/p6_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span></div>
+    <div class="container"> <img src="img/p6_1.jpg" width="640" height="239"> <img src="img/p6_2.jpg" width="640" height="252"> <img src="img/p6_3.jpg" width="640" height="217"><img src="img/p6_4.jpg" width="640" height="300"><div class="logo"></div> <span class="arrow"></span></div>
   </section>
-  <section class="section section7">
-    <div class="container"> <img src="images/p7_1.jpg" width="640" height="277"> <img src="images/p7_2.jpg" width="640" height="248"> <img src="images/p7_3.jpg" width="640" height="220"> <img src="images/p7_4.jpg" width="640" height="264"><div class="logo"></div> <span class="arrow"></span></div>
+  <section class="section section8">
+    <div class="container"> <img src="img/p8_1.jpg" width="640" height="277"> <img src="img/p8_2.jpg" width="640" height="248"> <img src="img/p8_3.jpg" width="640" height="220"> <img src="img/p8_4.jpg" width="640" height="264"><div class="logo"></div> <span class="arrow"></span></div>
+  </section>
+    <section class="section section9">
+    <div class="container"> <img src="img/p9_1.jpg" width="640" height="277"> <img src="img/p9_2.jpg" width="640" height="248"> <img src="img/p9_3.jpg" width="640" height="220"> <img src="img/p9_4.jpg" width="640" height="264"><div class="logo"></div> <span class="arrow"></span></div>
+  </section>
+    <section class="section section7">
+    <div class="container"> <img src="img/p7_1.jpg" width="640" height="277"> <a href="http://wd.paipai.com/static/wxd/h5.html?chid=49" ><img src="img/p7_2.jpg" width="640" height="248"></a> <img src="img/p7_3.jpg" width="640" height="220"> <img src="img/p7_4.jpg" width="640" height="264"><div class="logo"></div> <span class="arrow"></span></div>
   </section>
 </article>
 <div class="share_layer" id="shareLayer"></div>
