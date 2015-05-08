@@ -637,37 +637,71 @@ $('.page_item1,.page_item2,.bd,.page2_item,.page2_btn').on('click',function(even
     
     </script> 
     
-	<script src="http://static.paipaiimg.com/js/m2/index/js/kit/zepto.min.js"></script>
-<script src="http://static.paipaiimg.com/wx/js/halo.14.05.js"></script>
-<script type="text/javascript">
-/* 引入ui组件，翻页组件，微信分享组件，qq分享组件 */
-  halo.use('uievent','pageinvite','weixinshare','enablea','qqshare','loader',function(m){
-    var wrap=document.getElementById("wrap");
-    var pager=m.pageinvite.bind(wrap);
-    m.enablea.capture=false;
-    if(location.hash!='') {
-        var pageNu = location.hash.replace(/#page/,'');
-        pager.move(pageNu);
-    }
-  
-    /* 微信分享 */
-    _url = window.location.href;
-    m.weixinshare({
-        url:_url,
-        img:'http://pics1.paipaiimg.com/update/20150429/baby_151307584.png',//分享的图片，大小为100*100
-        title:'我带着你，你带着钱，我们就去海岛',// 分享方案的标题（分享到朋友圈时没有此信息）
-        desc:'老婆：世界那么大，我想去看看。老公：带着我！1元秒杀海岛游限量抢'// 分享方案的描述（分享到朋友圈的文案）
-    });
+  <script type="text/javascript" charset="utf-8">
+/**
+ * 微信分享
+ */
+var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+            }, function() {
+                callback('timeline');
+            });
+        });
 
-    /* 手机QQ分享 */
-    m.qqshare({
-        url:_url,
-        img:'http://pics1.paipaiimg.com/update/20150429/baby_151307584.png',//分享的图片，大小为100*100
-        title:'我带着你，你带着钱，我们就去海岛',// 分享方案的标题
-        desc:'老婆：世界那么大，我想去看看。老公：带着我！1元秒杀海岛游限量抢'// 分享方案的描述
-    });
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
 
-});
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid":appid || "",
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+            }, function() {
+                callback('appmessage');
+            })
+
+        });
+
+
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+          WeixinJSBridge.invoke('shareWeibo',{
+             "content":title,
+             "url":link
+          }, function(res){
+            callback('weibo');
+          });
+        });
+
+        WeixinJSBridge.on('menu:share:facebook', function(argv){
+          (dataForWeixin.callback)();
+          WeixinJSBridge.invoke('shareFB',{
+                "img_url":img_url,
+                "img_width":img_width,
+                "img_height":img_height,
+                "link":link,
+                "title": title,
+                "desc":desc
+          }, function(res){
+            callback('facebook');
+          });
+        });
+
+    })
+
+}
+wxShare('http://pics2.paipaiimg.com/update/20150506/baby_164745442.jpg',100,100,'http://www.paipai.com/promote/2014/4822/index.shtml
+','今天你爬山了么？看看你爬山属于哪种类型？
+','登山季出游景点&装备闪耀登场');
 </script>
     
     
